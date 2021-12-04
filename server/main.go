@@ -19,7 +19,8 @@ func NewServer(r *mux.Router) *Server {
 
 func (s *Server) handleIndex() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		log.Info("Serving ", r.Host)
+		log.Info("Serving the host: ", r.RemoteAddr)
+		log.Info("Serving the agent: ", r.Header.Get("User-Agent"))
 		http.ServeFile(w, r, "./static/index.html")
 	}
 }
