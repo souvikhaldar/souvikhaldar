@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -26,6 +27,13 @@ func (s *Server) handleIndex() http.HandlerFunc {
 	}
 }
 
+func (s *Server) handlePing() http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		log.Info("Ping request")
+		fmt.Fprint(w, "pong")
+	}
+}
+
 func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	s.router.ServeHTTP(w, r)
 }
@@ -40,6 +48,7 @@ func main() {
 	s := NewServer(r)
 
 	s.router.HandleFunc("/", s.handleIndex())
+	s.router.HandleFunc("/ping", s.handlePing())
 
 	http.ListenAndServe(":80", s)
 }

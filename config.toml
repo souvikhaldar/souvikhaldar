@@ -1,0 +1,4 @@
+theme = "ananke"
+baseURL = "localhost:1313"
+title = "Gouri Acharjee"
+languageCode = "en-us"
