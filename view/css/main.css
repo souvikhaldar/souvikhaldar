@@ -1,0 +1,12 @@
+body {
+	font-family: monospace;
+}
+
+ul {
+	font-family: helvetica;
+}
+
+li {
+  	list-style: square;
+}
+
