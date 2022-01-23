@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"net/http"
 
@@ -50,5 +51,15 @@ func main() {
 	s.router.HandleFunc("/", s.handleIndex())
 	s.router.HandleFunc("/ping", s.handlePing())
 
-	http.ListenAndServe(":80", s)
+	debug := flag.Bool("debug", false, "Set debug mode")
+	flag.Parse()
+	if !*debug {
+		// debug mode off
+		log.Println("Serving on port 80")
+		log.Fatal(http.ListenAndServe(":80", s))
+	} else {
+		// debug mode on
+		log.Println("Serving on port 8192")
+		log.Fatal(http.ListenAndServe(":8192", s))
+	}
 }
