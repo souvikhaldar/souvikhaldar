@@ -10,3 +10,7 @@ li {
   	list-style: square;
 }
 
+.light-theme {
+	color: #000000;
+	background: #00FF00;
+}
