@@ -15,8 +15,13 @@ func main() {
 	flag.Parse()
 	if !*debug {
 		// debug mode off
-		log.Println("Serving on port 80")
-		log.Fatal(http.ListenAndServe(":80", nil))
+		log.Println("Serving on port 443")
+		log.Fatal(http.ListenAndServeTLS(
+			":443",
+			"/etc/letsencrypt/live/souvikhaldar.in/fullchain.pem",
+			"/etc/letsencrypt/live/souvikhaldar.in/privkey.pem",
+			nil,
+		))
 	} else {
 		// debug mode on
 		log.Println("Serving on port 8192")
