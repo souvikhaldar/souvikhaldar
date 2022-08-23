@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>How to route entire traffic of iPhone and Macbook through Tor using Raspberry Pi - Souvik Haldar</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="How to route entire traffic of iPhone and Macbook through Tor using Raspberry Pi" />
+<meta property="og:description" content="Introduction It should be trivial to understand by now that privacy and anonymity is an absolute must in the current age of everything being on the Internet, from the bank/school documents to personal photos to social media.
+Also, being on Tor network, unlocks the world of Dark web to be explored, which is bigger than all the websites a common person might have visited in a lifetime, called the surface web." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://souvikhaldar.in/security/route_iphone_traffic_tor/" /><meta property="article:section" content="security" />
+<meta property="article:published_time" content="2021-07-14T16:10:03+05:30" />
+<meta property="article:modified_time" content="2021-07-14T16:10:03+05:30" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to route entire traffic of iPhone and Macbook through Tor using Raspberry Pi"/>
+<meta name="twitter:description" content="Introduction It should be trivial to understand by now that privacy and anonymity is an absolute must in the current age of everything being on the Internet, from the bank/school documents to personal photos to social media.
+Also, being on Tor network, unlocks the world of Dark web to be explored, which is bigger than all the websites a common person might have visited in a lifetime, called the surface web."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://souvikhaldar.in/security/route_iphone_traffic_tor/" /><link rel="prev" href="http://souvikhaldar.in/security/port-scan-and-nmap/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How to route entire traffic of iPhone and Macbook through Tor using Raspberry Pi",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/souvikhaldar.in\/security\/route_iphone_traffic_tor\/"
+        },"genre": "security","wordcount":  540 ,
+        "url": "http:\/\/souvikhaldar.in\/security\/route_iphone_traffic_tor\/","datePublished": "2021-07-14T16:10:03+05:30","dateModified": "2021-07-14T16:10:03+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">How to route entire traffic of iPhone and Macbook through Tor using Raspberry Pi</h1><div class="content" id="content"><h1 id="introduction">Introduction</h1>
+<p>It should be trivial to understand by now that privacy and anonymity is an absolute must in the current age of everything being on the Internet, from the bank/school documents to personal photos to social media.<br>
+Also, being on Tor network, unlocks the world of Dark web to be explored, which is bigger than all the websites a common person might have visited in a lifetime, called the surface web.<br>
+Tor, The Onion Routing project, is the pioneer of freedom in the world of Internet.
+Tor can be used to</p>
+<p><strong>Defend yourself against tracking and surveillance. Circumvent censorship</strong></p>
+<p>Tor Relay Network is a great way of staying anonymous over the Internet because on this network the traffic gets directed through a free, community driven, overlay network consisting of 6 thousand relays.</p>
+<p>In this article I will explain how I used a Raspberry Pi to help route all the traffic on my iPhone through the Tor network, helping me secure my internet traffic on the device I use the most, from banking to social media!</p>
+<p>Also, I&rsquo;ll do the same for Macbook, which is the system on which I work!</p>
+<h1 id="steps">Steps</h1>
+<p>Here, Raspberry Pi 3 would be used the proxy server through which the network is going to be routed.</p>
+<ol>
+<li>
+<p>Setup the raspberry Pi in any preferred way, I would suggest installing Raspbian OS.</p>
+</li>
+<li>
+<p>Install <code>tor</code> using <code>sudo apt-get install tor</code></p>
+</li>
+<li>
+<p>Configure tor:<br>
+Edit <code>torrc</code> file:</p>
+<ol>
+<li><code>sudo vim /etc/tor/torrc</code></li>
+<li>Most of the line would be commented out, but uncomment and make changes to the following lines:
+<code>SocksPort 0.0.0.0:9100</code>
+You can configure SockPolicy, DataDirectory, etc as required.</li>
+<li>Now reload the configs using <code>sudo systemctl daemon-reload</code></li>
+<li>Restart the service <code>sudo systemctl restart tor@default.service</code></li>
+</ol>
+</li>
+<li>
+<p>Now you can use tor on macbook easily configuring proxy option in the settings. This is going to be a socks5 proxy.<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/proxies.png"
+        data-srcset="/images/proxies.png, /images/proxies.png 1.5x, /images/proxies.png 2x"
+        data-sizes="auto"
+        alt="/images/proxies.png"
+        title="Search for proxies in Preferences and update the socks5 proxy" /></p>
+<p>If you want to setup tor routing only on Mac then you are good to go. You don&rsquo;t need to follow further steps. Now all of your traffic would be routed though the tor socks 5 proxy on the RPI which is present on your local network. (the IP of RPI is 192.168.0.106 and port is 9100 as set in step 3.2).</p>
+</li>
+<li>
+<p>iPhone does not allow routing traffic though socks 5 proxy, hence we need a HTTP proxy on top of the tor socks 5 proxy. For that we will be using <a href="https://www.irif.fr/~jch/software/polipo/" target="_blank" rel="noopener noreffer ">polipo</a></p>
+<ol>
+<li>Install polipo on pi using <code>sudo apt-get install polipo</code></li>
+<li>Configure its config:
+<ol>
+<li><code>sudo /etc/polipo/config</code></li>
+<li>Change the following items in the config:</li>
+</ol>
+<pre tabindex="0"><code>diskCacheRoot = &#34; &#34; # to avoid caching data on local system
+allowedClients = 127.0.0.1, 192.168.0.0/24 # Expose your network (modify accordingly)
+    socksParentProxy = &#34;localhost:9100&#34;
+socksProxyType = socks5
+    proxyAddress = &#34;0.0.0.0&#34;    # IPv4 only
+</code></pre></li>
+<li>Now you need to put IP of the RPI and port 8123 in the <code>manual</code> proxy setting. You can reach there by going to settings &ndash;&gt; wifi &ndash;&gt; select your connected wifi &ndash;&gt; go to the bottom and click <code>Configure Proxy</code> &ndash;&gt; Select <code>Manual</code> &ndash;&gt; Save.</li>
+</ol>
+</li>
+</ol>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/mobProxy.PNG"
+        data-srcset="/images/mobProxy.PNG, /images/mobProxy.PNG 1.5x, /images/mobProxy.PNG 2x"
+        data-sizes="auto"
+        alt="/images/mobProxy.PNG"
+        title="Configure proxy on iPhone" /></p>
+<h1 id="conclusion">Conclusion</h1>
+<p>Now you are ready to explore internet with peace of mind that anonymity can provide. Please do cross check once that you were indeed able to configure tor well by visiting <a href="check.torproject.org" rel="">this link</a> . You should ideally see something like this :)</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/torConfirm.png"
+        data-srcset="/images/torConfirm.png, /images/torConfirm.png 1.5x, /images/torConfirm.png 2x"
+        data-sizes="auto"
+        alt="/images/torConfirm.png"
+        title="Tor is configured successfully" /></p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

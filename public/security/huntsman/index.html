@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Huntsman: A swiss army knife for offensive security - Souvik Haldar</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Huntsman: A swiss army knife for offensive security" />
+<meta property="og:description" content="Huntsman A swiss army knife for offensive security.
+https://souvikhaldar.github.io/huntsman/
+Inspiration The inspiration of this tool are primarily the following two sources:
+Pursuing Advanced Exercutive Program in Cyber Security and Cyber Defense at the esteemed c3i institution of IIT Kanpur and Professor Sandeep Shukla, Rohit Negi and Anand Handa, who helped take baby steps in cyber security world. The excellent book Black Hat Go: Go Programming For Hackers and Pentesters by Tom Steele, Chris Patten and Dan Kottmann." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://souvikhaldar.in/security/huntsman/" /><meta property="article:section" content="security" />
+<meta property="article:published_time" content="2020-07-26T13:53:35+05:30" />
+<meta property="article:modified_time" content="2020-07-26T13:53:35+05:30" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Huntsman: A swiss army knife for offensive security"/>
+<meta name="twitter:description" content="Huntsman A swiss army knife for offensive security.
+https://souvikhaldar.github.io/huntsman/
+Inspiration The inspiration of this tool are primarily the following two sources:
+Pursuing Advanced Exercutive Program in Cyber Security and Cyber Defense at the esteemed c3i institution of IIT Kanpur and Professor Sandeep Shukla, Rohit Negi and Anand Handa, who helped take baby steps in cyber security world. The excellent book Black Hat Go: Go Programming For Hackers and Pentesters by Tom Steele, Chris Patten and Dan Kottmann."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://souvikhaldar.in/security/huntsman/" /><link rel="prev" href="http://souvikhaldar.in/security/invite/" /><link rel="next" href="http://souvikhaldar.in/security/port-scan-and-nmap/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Huntsman: A swiss army knife for offensive security",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/souvikhaldar.in\/security\/huntsman\/"
+        },"genre": "security","wordcount":  800 ,
+        "url": "http:\/\/souvikhaldar.in\/security\/huntsman\/","datePublished": "2020-07-26T13:53:35+05:30","dateModified": "2020-07-26T13:53:35+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Huntsman: A swiss army knife for offensive security</h1><div class="content" id="content"><h1 id="huntsman">Huntsman</h1>
+<p>A swiss army knife for offensive security.<br>
+<a href="https://souvikhaldar.github.io/huntsman/" target="_blank" rel="noopener noreffer ">https://souvikhaldar.github.io/huntsman/</a></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/huntsman-main.jpg"
+        data-srcset="/images/huntsman-main.jpg, /images/huntsman-main.jpg 1.5x, /images/huntsman-main.jpg 2x"
+        data-sizes="auto"
+        alt="/images/huntsman-main.jpg"
+        title="/images/huntsman-main.jpg" /></p>
+<h1 id="inspiration">Inspiration</h1>
+<p>The inspiration of this tool are primarily the following two sources:</p>
+<ol>
+<li>Pursuing <a href="https://talentsprint.com/pages/wip/iit-kanpur/v2.5/index.html" target="_blank" rel="noopener noreffer ">Advanced Exercutive Program in Cyber Security and Cyber Defense</a> at the esteemed <a href="https://security.cse.iitk.ac.in/" target="_blank" rel="noopener noreffer ">c3i</a> institution of <a href="https://www.iitk.ac.in/" target="_blank" rel="noopener noreffer ">IIT Kanpur</a> and Professor <a href="https://www.cse.iitk.ac.in/users/sandeeps/" target="_blank" rel="noopener noreffer ">Sandeep Shukla</a>, <a href="https://www.linkedin.com/in/rohit-negi-02856227/" target="_blank" rel="noopener noreffer ">Rohit Negi</a> and <a href="https://www.linkedin.com/in/anand-handa-391a61107/" target="_blank" rel="noopener noreffer ">Anand Handa</a>, who helped take baby steps in cyber security world.</li>
+<li>The excellent book <a href="https://www.amazon.in/Black-Hat-Go-Programming-Pentesters-ebook/dp/B073NPY29N" target="_blank" rel="noopener noreffer ">Black Hat Go: Go Programming For Hackers and Pentesters</a> by Tom Steele, Chris Patten and Dan Kottmann.</li>
+</ol>
+<h1 id="what-sets-huntsman-apart">What sets huntsman apart?</h1>
+<ul>
+<li>Fast and concurrent</li>
+<li>Single binary executable for almost every platform and architecture</li>
+<li>Consumes very less RAM (about 10-15 MB) and CPU</li>
+<li>Each step well documented and covered in video tutorial as well</li>
+<li>The binary compiled it Golang is very hard to reverse engineer, hence it is
+safe from Static Analysis to a large extent.</li>
+</ul>
+<h1 id="complete-guide">Complete Guide</h1>
+<h1 id="installation">Installation</h1>
+<p>There multiple ways in which you can install <code>huntsman</code> on your machine or a target machine.</p>
+<ol>
+<li>
+<p>Install it using golang compiler using <code>go install</code> or <code>go build</code></p>
+<ol>
+<li><a href="https://golang.org/doc/install" target="_blank" rel="noopener noreffer ">Install Golang</a></li>
+<li><code>git clone git@github.com:souvikhaldar/huntsman.git</code></li>
+<li><code>cd huntsman</code></li>
+<li><code>go install</code></li>
+</ol>
+</li>
+<li>
+<p>Download the binary from RELEASES and save it on on <code>$PATH</code>.</p>
+</li>
+<li>
+<p>Use the <code>goinstaller.py</code> script.</p>
+<pre tabindex="0"><code>./goinstaller.py --help 
+Install go program for multiple OS and multiple architectures
+Run goinstaller.py --help for all options
+usage: goinstaller.py [-h]
+		      [--os {all,popular,linux,darwin,windows,dragonfly,android,freebsd,netbsd,openbsd,plan9,solaris,aixjs}]
+		      [--arch {all,popular,amd64,386,arm,ppc64,arm64,ppc64le,mips,mipsle,mips64,mips64le,s390x}]
+		      [--source SOURCE] [--target TARGET]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --os {all,popular,linux,darwin,windows,dragonfly,android,freebsd,netbsd,openbsd,plan9,solaris,aixjs}
+			The target OS. Eg. all,linux,darwin,windows,etc
+  --arch {all,popular,amd64,386,arm,ppc64,arm64,ppc64le,mips,mipsle,mips64,mips64le,s390x}
+			The target&#39;s architecture. Eg. all,amd64,386,etc
+  --source SOURCE       The directory where source source is present
+  --target TARGET       The target dir where the binary needs to be stored
+</code></pre><p>``</p>
+<p>Eg. Compiling for <strong>popular</strong> OSes like Windows, Microsoft and Linux for 64-bit architecture can be done using
+<code>./goinstaller.py --target ./download --os popular --arch amd64</code></p>
+</li>
+</ol>
+<h1 id="transfer-to-a-target">Transfer to a target</h1>
+<p>Once you&rsquo;ve compiled huntsman for the target OS and arch, you can transfer it
+using <code>scp</code> or any tool of choice:<br>
+Eg, transfering linux binary to target machine:<br>
+<code>scp ./download/linux_amd64 username@address:location</code></p>
+<h1 id="setup">Setup</h1>
+<p>Some tools allow you to store the information on the database, like IP location tracing.<br>
+If you want the same, you have to set the configuration for the same in <code>config.json</code> at
+the root and provide the following information:</p>
+<pre tabindex="0"><code>{
+  &#34;mongo_uri&#34;: &#34;uri of the mongo atlas&#34;,
+  &#34;mongo_username&#34;:&#34;usename&#34;,
+  &#34;mongo_password&#34;:&#34;password&#34;,
+  &#34;mongo_database&#34;:&#34;database name&#34;,
+  &#34;mongo_collection&#34;:&#34;collection name&#34;,
+  &#34;js_file_path&#34;:&#34;path to js file for serving reverse shell&#34;
+}
+</code></pre><h1 id="fast-concurrent-port-scanning">Fast concurrent port scanning</h1>
+<pre tabindex="0"><code>huntsman portscan --help                                                                                    SIGINT(2) ↵  5295  10:30:46
+Concurrently scan the provided range (by default 0 to 65535) to check if any port is open
+
+Usage:
+  huntsman portscan [flags]
+
+Flags:
+  -e, --end int32       last port number (default 65535)
+  -h, --help            help for portscan
+  -s, --start int32     starting port number (default 1)
+      --target string   IP/URL address of the machine to be scanned
+  -t, --threads int32   the number of goroutines to execute at a time (default 100)
+</code></pre><p>Example:<br>
+<code>huntsman portScan --target abc.com</code></p>
+<h1 id="location-details-of-ip-or-tcpdump">Location details of IP or tcpdump</h1>
+<pre tabindex="0"><code>huntsman ipinfo --help                                                                                              ✔  5244  03:05:00
+Fetch the location information of the IP
+
+Usage:
+  huntsman ipinfo [flags]
+
+Flags:
+  -c, --config string     The path to the configuration JSON file
+  -h, --help              help for ipinfo
+      --ip string         IP address of the target
+  -p, --persist           Do you want to store the response to mongo? If yes, please provide value to --config flag
+  -s, --read-stream       Do you want to read from tcpdump output contineously?
+  -t, --tcp-dump string   source file of tcpdump
+</code></pre><p>There are three ways you can lookup location details of IP.</p>
+<ol>
+<li>Lookup single IP or domain name. Eg. <code>huntsman ipinfo --ip netflix.com</code></li>
+<li>Parse <code>tcpdump</code> log. Eg. <code>huntsman ipinfo --tcp-dump server.log</code></li>
+<li>See the location details of incoming traffic in real tim. <code>huntsman ipinfo -s</code><br>
+If you want to store it to db, you can provide details in <code>config.json</code> at root dir, then use <code>huntsman ipinfo -s -p -c config.json</code><br>
+<a href="https://youtu.be/rdE3cGBT_wA" target="_blank" rel="noopener noreffer ">Youtube link for the video demonstration</a></li>
+</ol>
+<h1 id="run-a-tcp-proxy">Run a TCP proxy</h1>
+<p><code>huntsman proxy -s &lt;local-port&gt; -t &lt;target-address&gt; -p &lt;target-port&gt;</code></p>
+<h1 id="run-a-tcp-listener">Run a TCP listener</h1>
+<p><code>huntsman listen --port=&lt;port&gt;</code></p>
+<h1 id="reverse-shell">Reverse shell</h1>
+<p>First you need to compile the binary for the target machine using the
+<code>goinstaller.py</code> or anything of choice. Then preferably use <code>scp</code> to transfer
+the binary to the target machine (see <code>Installation</code> section) then execute it
+using <code>./&lt;binary-name&gt; reverseshell --port &lt;port-number&gt;</code>. Now the listener is
+running to which you will be sending instructions to execute.</p>
+<p>We will be using <a href="http://netcat.sourceforge.net/" target="_blank" rel="noopener noreffer ">netcat</a> as the client for
+sending the commands over the network.<br>
+<code>nc &lt;address-of-target&gt; &lt;port-number&gt;</code><br>
+<a href="https://youtu.be/eE0k0GVZXyc" target="_blank" rel="noopener noreffer ">Youtube link for the video demonstration</a></p>
+<h1 id="keylogger">Keylogger</h1>
+<p>A keylogger can log the keystrokes made by a user ,typically on a website. The logged keystrokes most of the times are crucial credentials of the users. Hackers use Credential Harvester (like keylogger) to steal your credentials.
+Huntsman is the tool that contains a keylogger as well. <br>
+Eg. <code>huntsman keylogger -w localhost:8192 -l 8192</code></p>
+<p>This video is the demonstration for using huntsman as a keylogger. <a href="https://youtu.be/BoPICq1MVhA" target="_blank" rel="noopener noreffer ">Link to youtube video</a></p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

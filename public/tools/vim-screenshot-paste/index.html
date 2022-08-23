@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>How to paste screenshot in vim buffer on Ubuntu - Souvik Haldar</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="How to paste screenshot in vim buffer on Ubuntu" />
+<meta property="og:description" content="Goal In markdown files, you can insert an image by writing ![alt text](/path/to/image), but doing this task manually is quite cumbersome. Let me state the manual steps first to make you understand why this is cumbersome.
+Take screenshot Save it at proper location Mention the image in the markdown using the above mentioned syntax, i.e ![]() Now, I wanted to complete the all the above steps in least number of keystrokes, in one step!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://souvikhaldar.in/tools/vim-screenshot-paste/" /><meta property="article:section" content="tools" />
+<meta property="article:published_time" content="2020-11-01T00:30:30+05:30" />
+<meta property="article:modified_time" content="2020-11-01T00:30:30+05:30" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How to paste screenshot in vim buffer on Ubuntu"/>
+<meta name="twitter:description" content="Goal In markdown files, you can insert an image by writing ![alt text](/path/to/image), but doing this task manually is quite cumbersome. Let me state the manual steps first to make you understand why this is cumbersome.
+Take screenshot Save it at proper location Mention the image in the markdown using the above mentioned syntax, i.e ![]() Now, I wanted to complete the all the above steps in least number of keystrokes, in one step!"/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://souvikhaldar.in/tools/vim-screenshot-paste/" /><link rel="prev" href="http://souvikhaldar.in/tools/perkeep/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How to paste screenshot in vim buffer on Ubuntu",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/souvikhaldar.in\/tools\/vim-screenshot-paste\/"
+        },"genre": "tools","wordcount":  660 ,
+        "url": "http:\/\/souvikhaldar.in\/tools\/vim-screenshot-paste\/","datePublished": "2020-11-01T00:30:30+05:30","dateModified": "2020-11-01T00:30:30+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">How to paste screenshot in vim buffer on Ubuntu</h1><div class="content" id="content"><h1 id="goal">Goal</h1>
+<p>In markdown files, you can insert an image by writing <code>![alt text](/path/to/image)</code>, but doing this task manually is quite cumbersome. Let me state the manual steps first to make you understand why this is cumbersome.</p>
+<ol>
+<li>Take screenshot</li>
+<li>Save it at proper location</li>
+<li>Mention the image in the markdown using the above mentioned syntax, i.e <code>![]()</code></li>
+</ol>
+<p>Now, I wanted to complete the all the above steps in least number of keystrokes, in one step! Let me explain how I did it, then I&rsquo;ll also explain what challenges I faced in the meanwhile. All the steps were performed on Ubuntu 20, hence it might differ from OS to OS. Also, this was a great learning experience for me, hence want to document it the best way possible.</p>
+<h1 id="procedure">Procedure</h1>
+<p>I thought of trying out <a href="https://github.com/ferrine/md-img-paste.vim" target="_blank" rel="noopener noreffer ">this vim plugin</a> but it was surprisingly not working. Then I read the documentation properly which led me to the genesis of this plugin which is <a href="https://vi.stackexchange.com/a/14117/30129" target="_blank" rel="noopener noreffer ">this stack exchange answer</a>. Then I started following this answer, understood the vimscript then added it to my <code>vimrc</code> but, it was still not working :(</p>
+<pre tabindex="0"><code>nnoremap &lt;silent&gt; &lt;leader&gt;p :call SaveFile()&lt;cr&gt;
+
+function! SaveFile() abort
+  let targets = filter(
+        \ systemlist(&#39;xclip -selection clipboard -t TARGETS -o&#39;),
+        \ &#39;v:val =~# &#39;&#39;image&#39;&#39;&#39;)
+  if empty(targets) | return | endif
+
+  let outdir = expand(&#39;%:p:h&#39;) . &#39;/img&#39;
+  if !isdirectory(outdir)
+    call mkdir(outdir)
+  endif
+
+  let mimetype = targets[0]
+  let extension = split(mimetype, &#39;/&#39;)[-1]
+  let tmpfile = outdir . &#39;/savefile_tmp.&#39; . extension
+  call system(printf(&#39;xclip -selection clipboard -t %s -o &gt; %s&#39;,
+        \ mimetype, tmpfile))
+
+  let cnt = 0
+  let filename = outdir . &#39;/image&#39; . cnt . &#39;.&#39; . extension
+  while filereadable(filename)
+    call system(&#39;diff &#39; . tmpfile . &#39; &#39; . filename)
+    if !v:shell_error
+      call delete(tmpfile)
+      break
+    endif
+
+    let cnt += 1
+    let filename = outdir . &#39;/image&#39; . cnt . &#39;.&#39; . extension
+  endwhile
+
+  if filereadable(tmpfile)
+    call rename(tmpfile, filename)
+  endif
+
+  let @* = &#39;[](&#39; . fnamemodify(filename, &#39;:.&#39;) . &#39;)&#39;
+  normal! &#34;*p
+endfunction
+</code></pre><p>Upon investigating it further I readlized that it was missing <code>!</code> infront of <code>[]()</code> while inserting the image in the script, but, even after updating the vimscript it was still not working!<br>
+Then I tried to figure out if my <a href="https://vim.fandom.com/wiki/Accessing_the_system_clipboard" target="_blank" rel="noopener noreffer ">vim system register</a> was working properly. It turns out my vim version does not support clipboard! (You can check this by running <code>vim --version | grep clipboard</code>, then see it is <code>-clipboard</code> or <code>+clipboard</code>). Hence I had to install <code>vim-gtk</code> to enable this feature. I&rsquo;ve <a href="https://github.com/ferrine/md-img-paste.vim/issues/47" target="_blank" rel="noopener noreffer ">raised an issue in the project to specify this issue</a>. Now I was able to paste the data stored in system clipboard to vim buffer and vice-versa.<br>
+But it turns out I was still not able to copy screenshot using the default tool, but able to paste in vim buffer yet. Now I need to solve the copy problem!<br>
+Ubuntu has <code>gnome-screenshot</code> which allows you to capture portion of the screen (IMHO most flexible way to take screenshot) and then paste it anywhere I want. But, after lots of frustration I understood that <code>gnome-screenshot</code> is taking the screenshot but it is not being copied to <code>xclip</code> clipboard manager which is what I am using to paste the screenshot in vim buffer. I order to get around this I had to <a href="https://askubuntu.com/a/1212806" target="_blank" rel="noopener noreffer ">assign a keyboard shortcut to the following command to take screenshot and place it in xclip</a></p>
+<pre tabindex="0"><code>gnome-screenshot -acf /tmp/test &amp;&amp; cat /tmp/test | xclip -i -selection clipboard -target image/png
+</code></pre><p>Ultimately now it worked! Now I can take screenshot using the custom keyboard shortcut (which pops up a terminal too) and then paste it using <code>&lt;leader&gt;p</code> in vim since I have mapped it this way in my vimrc.</p>
+<h1 id="conclusion">Conclusion</h1>
+<p>It was complicated and took me a lot of time to figure it out but it offered me chance to learn many things. If you know how to do it better please let me know, or, if you find similar issue, <a href="https://twitter.com/s0uvikhaldar" target="_blank" rel="noopener noreffer ">tweet</a> to me or DM me on <a href="https://www.linkedin.com/in/souvikhaldar/" target="_blank" rel="noopener noreffer ">LinkedIn</a>, I would be happy to help!</p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

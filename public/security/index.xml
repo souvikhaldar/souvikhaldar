@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Securities on Souvik Haldar</title>
+    <link>http://souvikhaldar.in/security/</link>
+    <description>Recent content in Securities on Souvik Haldar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 14 Jul 2021 16:10:03 +0530</lastBuildDate><atom:link href="http://souvikhaldar.in/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to route entire traffic of iPhone and Macbook through Tor using Raspberry Pi</title>
+      <link>http://souvikhaldar.in/security/route_iphone_traffic_tor/</link>
+      <pubDate>Wed, 14 Jul 2021 16:10:03 +0530</pubDate>
+      
+      <guid>http://souvikhaldar.in/security/route_iphone_traffic_tor/</guid>
+      <description>Introduction It should be trivial to understand by now that privacy and anonymity is an absolute must in the current age of everything being on the Internet, from the bank/school documents to personal photos to social media.
+Also, being on Tor network, unlocks the world of Dark web to be explored, which is bigger than all the websites a common person might have visited in a lifetime, called the surface web.</description>
+    </item>
+    
+    <item>
+      <title>Enumeration using nmap</title>
+      <link>http://souvikhaldar.in/security/port-scan-and-nmap/</link>
+      <pubDate>Wed, 02 Jun 2021 10:50:24 +0530</pubDate>
+      
+      <guid>http://souvikhaldar.in/security/port-scan-and-nmap/</guid>
+      <description>Introduction The de-facto standard for the first step in enumerating the target.
+Let&amp;rsquo;s try to understand a few concepts.
+Port scanning TCP connect scan -sT If three-way handshake (SYN &amp;ndash;&amp;gt; SYN ACK &amp;ndash;&amp;gt; ACK) is complete on a TCP port, the port is considered open. Port scanning on port range 3388-3390 using netcat: nc -nvv -w 1 -z 10.11.1.220 3388-3390 Hence, if a port is OPEN, it will reply the incoming SYN request with SYN ACK request then the client will further send ACK to complete the handshake.</description>
+    </item>
+    
+    <item>
+      <title>Huntsman: A swiss army knife for offensive security</title>
+      <link>http://souvikhaldar.in/security/huntsman/</link>
+      <pubDate>Sun, 26 Jul 2020 13:53:35 +0530</pubDate>
+      
+      <guid>http://souvikhaldar.in/security/huntsman/</guid>
+      <description>Huntsman A swiss army knife for offensive security.
+https://souvikhaldar.github.io/huntsman/
+Inspiration The inspiration of this tool are primarily the following two sources:
+Pursuing Advanced Exercutive Program in Cyber Security and Cyber Defense at the esteemed c3i institution of IIT Kanpur and Professor Sandeep Shukla, Rohit Negi and Anand Handa, who helped take baby steps in cyber security world. The excellent book Black Hat Go: Go Programming For Hackers and Pentesters by Tom Steele, Chris Patten and Dan Kottmann.</description>
+    </item>
+    
+    <item>
+      <title>Hacking my way into Hack The Box invitation</title>
+      <link>http://souvikhaldar.in/security/invite/</link>
+      <pubDate>Tue, 05 May 2020 12:50:24 +0530</pubDate>
+      
+      <guid>http://souvikhaldar.in/security/invite/</guid>
+      <description>In order to join Hack The Box, one needs to capture the flag and the flag is the invitation code which will allow you to join them. This blog explains the steps I followed to capture the flag.
+The challenge says You can find the invitation code in this page itself, hence it was clear that the page needs to be inspected. Upon checking the console, I found the image of a skull, beside which it was written that the look look so a suspicious javascript file being loaded in the current page.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>irssi: IRC client setup and configuration - Souvik Haldar</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="irssi: IRC client setup and configuration" />
+<meta property="og:description" content="What is IRC? IRC is the abbreviation for Internet Relay Chat, which is an application layer protocol of the OSI stack, used for communication between systems connected to the internet. It follows the client-server architecture model.
+The OSI stack explained pic.twitter.com/4bTWAOcwLk
+&mdash; Mario Fusco 🇪🇺🇺🇦 (@mariofusco) June 10, 2019 An easy way to remember this stack is:
+Please Do Not Throw Sausage Pizza Away What is an IRC client? IRC clients are the computer programs that implements the IRC protocol to establish connection to the server, to which more clients are connected further and hence, can communicate with each other, in the client-server way." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://souvikhaldar.in/tools/setting_up_irssi/" /><meta property="article:section" content="tools" />
+<meta property="article:published_time" content="2019-05-16T18:59:51+05:30" />
+<meta property="article:modified_time" content="2019-05-16T18:59:51+05:30" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="irssi: IRC client setup and configuration"/>
+<meta name="twitter:description" content="What is IRC? IRC is the abbreviation for Internet Relay Chat, which is an application layer protocol of the OSI stack, used for communication between systems connected to the internet. It follows the client-server architecture model.
+The OSI stack explained pic.twitter.com/4bTWAOcwLk
+&mdash; Mario Fusco 🇪🇺🇺🇦 (@mariofusco) June 10, 2019 An easy way to remember this stack is:
+Please Do Not Throw Sausage Pizza Away What is an IRC client? IRC clients are the computer programs that implements the IRC protocol to establish connection to the server, to which more clients are connected further and hence, can communicate with each other, in the client-server way."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://souvikhaldar.in/tools/setting_up_irssi/" /><link rel="next" href="http://souvikhaldar.in/tools/linux_tips_tricks/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "irssi: IRC client setup and configuration",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/souvikhaldar.in\/tools\/setting_up_irssi\/"
+        },"genre": "tools","wordcount":  494 ,
+        "url": "http:\/\/souvikhaldar.in\/tools\/setting_up_irssi\/","datePublished": "2019-05-16T18:59:51+05:30","dateModified": "2019-05-16T18:59:51+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">irssi: IRC client setup and configuration</h1><div class="content" id="content"><h2 id="what-is-irc">What is IRC?</h2>
+<p>IRC is the abbreviation for <em>Internet Relay Chat</em>, which is an application layer protocol of the OSI stack, used for communication between systems connected to the internet. It follows the <a href="https://en.wikipedia.org/wiki/Client%E2%80%93server_model" target="_blank" rel="noopener noreffer ">client-server architecture model</a>.</p>
+<p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">The OSI stack explained <a href="https://t.co/4bTWAOcwLk">pic.twitter.com/4bTWAOcwLk</a></p>&mdash; Mario Fusco 🇪🇺🇺🇦 (@mariofusco) <a href="https://twitter.com/mariofusco/status/1137991622178816001?ref_src=twsrc%5Etfw">June 10, 2019</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<br>
+An easy way to remember this stack is:</p>
+<pre tabindex="0"><code>Please
+Do
+Not
+Throw
+Sausage
+Pizza
+Away
+</code></pre><h2 id="what-is-an-irc-client">What is an IRC client?</h2>
+<p>IRC clients are the computer programs that implements the IRC protocol to establish connection to the server, to which more clients are connected further and hence, can communicate with each other, in the client-server way.</p>
+<p>There are several IRC clients available today, but I prefer to use terminal based clients, for example, bitchx, irssi, etc.
+I love <a href="https://irssi.org/" target="_blank" rel="noopener noreffer ">irssi</a> and in this post I&rsquo;m going to go step by step as to how <strong>I</strong> did the setup and configure irssi on mac, but linux distributions should follow similar configuration process, except installation.</p>
+<p>You can install it on mac using brew package manager- <code>brew install irssi</code>.</p>
+<p>Now you can use it to connect desired server and then channels, manually. These following setups for that should suffice.</p>
+<h3 id="manual-set-up">Manual set-up</h3>
+<ol>
+<li>
+<p>Connect to the server.<br>
+Eg. <code>/connect chat.freenode.net</code> (if you want to connect to <a href="https://freenode.net/" target="_blank" rel="noopener noreffer ">Freenode</a> server)</p>
+</li>
+<li>
+<p>Identify yourself
+<code>/msg nickserv identify &lt;username&gt; &lt;password&gt;</code>
+Some channels doesn&rsquo;t require you to identify yourself, but mostly it does.
+(PS- You need to register yourself first with freenode, follow <a href="https://freenode.net/kb/answer/registration" target="_blank" rel="noopener noreffer ">this link</a>)</p>
+</li>
+<li>
+<p>You would not want to reveal your IP address, which is visible to anyone in the channel when you join it. There are many ways to hide it, but getting a cloak is the easiest. (though not very reliable)
+To get a cloak, follow <a href="https://freenode.net/kb/answer/cloaks" target="_blank" rel="noopener noreffer ">this link</a>.</p>
+</li>
+<li>
+<p>Join the required channel.
+<code>/join &lt;channel-name&gt;</code></p>
+</li>
+</ol>
+<h3 id="now-ill-show-you-how-you-can-automate-points-12-and-4-by-configuring-saslhttpsfreenodenetkbanswerirssi">Now I&rsquo;ll show you how you can automate points 1,2 and 4 by <a href="https://freenode.net/kb/answer/irssi" target="_blank" rel="noopener noreffer ">configuring SASL</a>.</h3>
+<p><strong>Points 1 and 2</strong></p>
+<ol>
+<li><code>/network add -sasl_username &lt;login&gt; -sasl_password &lt;password&gt; -sasl_mechanism PLAIN freenode</code></li>
+<li><code>/server add -auto -net freenode -ssl -ssl_verify chat.freenode.net 6697</code></li>
+<li><code>/save</code></li>
+</ol>
+<p><strong>point 4</strong></p>
+<ol>
+<li>
+<p><code>/channel add -auto &lt;#channel-name&gt; &lt;network&gt;</code><br>
+eg. <code>/channel add -auto #dgplug freenode</code></p>
+</li>
+<li>
+<p><code>/save</code></p>
+</li>
+</ol>
+<h3 id="some-basic-commands-that-you-might-use-regularly-">Some basic commands that you might use regularly:-</h3>
+<ul>
+<li><code>/msg &lt;nickname&gt;</code> to send private message.</li>
+<li><code>/exit</code> to leave irssi</li>
+<li><code>/me &lt;message&gt;</code> to write a message in second person.</li>
+<li><code>/whois &lt;nickname&gt;</code> to know about the person</li>
+<li><code>/part</code> to leave a channel<br>
+(other useful commands you can find <a href="https://irssi.org/documentation/help/" target="_blank" rel="noopener noreffer ">here</a>)</li>
+</ul>
+<p><em>Also</em>, it is quite helpful if you can get some sort of notification when you&rsquo;re nick is mentioned by someone. By default, irssi will hilight the person who has mentioned you&rsquo;re nick but some sound notification makes if way more handy and sometimes it isn&rsquo;t even possible to browse though all the texts to see if someone has mentioned you. So, following will help you get a <em>beep</em> tone in case someone&rsquo;s mentions you-<br>
+<code>/set bell_beeps ON</code><br>
+<code>/set beep_msg_level MSGS NOTICES DCC DCCMSGS HILIGHT</code></p>
+<p>Now, you&rsquo;re ready to enter the world of IRC chatting, <em>welcome to one of oldest platform of real-time communication!</em></p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

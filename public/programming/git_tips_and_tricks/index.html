@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Git tips and tricks - Souvik Haldar</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Git tips and tricks" />
+<meta property="og:description" content="Git is arguably the foundation tool of Open Source and software engineering (VCS) part in general, second biggest gift of Linus Torvals to the world after the mighty Linux! If you are new to the world of OSS, git is probably the first tool you should learn about! While getting starting with git is very easy, mastering git is a lifetime endeavour! So this article would be forever in WIP, I&rsquo;ll keep adding notes to it, so that anyone (including me) can keep visiting." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://souvikhaldar.in/programming/git_tips_and_tricks/" /><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2019-08-02T19:20:36+05:30" />
+<meta property="article:modified_time" content="2019-08-02T19:20:36+05:30" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Git tips and tricks"/>
+<meta name="twitter:description" content="Git is arguably the foundation tool of Open Source and software engineering (VCS) part in general, second biggest gift of Linus Torvals to the world after the mighty Linux! If you are new to the world of OSS, git is probably the first tool you should learn about! While getting starting with git is very easy, mastering git is a lifetime endeavour! So this article would be forever in WIP, I&rsquo;ll keep adding notes to it, so that anyone (including me) can keep visiting."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://souvikhaldar.in/programming/git_tips_and_tricks/" /><link rel="prev" href="http://souvikhaldar.in/programming/understanding_recursion/" /><link rel="next" href="http://souvikhaldar.in/programming/golang_intro/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Git tips and tricks",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/souvikhaldar.in\/programming\/git_tips_and_tricks\/"
+        },"genre": "programming","wordcount":  527 ,
+        "url": "http:\/\/souvikhaldar.in\/programming\/git_tips_and_tricks\/","datePublished": "2019-08-02T19:20:36+05:30","dateModified": "2019-08-02T19:20:36+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Git tips and tricks</h1><div class="content" id="content"><p><code>Git</code> is arguably the foundation tool of <em>Open Source</em> and software engineering (VCS) part in general, second biggest gift of <a href="https://en.wikipedia.org/wiki/Linus_Torvalds" target="_blank" rel="noopener noreffer ">Linus Torvals</a> to the world after the mighty <code>Linux</code>! If you are new to the world of OSS, <code>git</code> is probably the first tool you should learn about! While getting starting with <code>git</code> is very easy, mastering <code>git</code> is a lifetime endeavour! So this article would be forever in WIP, I&rsquo;ll keep adding notes to it, so that anyone (including me) can keep visiting.</p>
+<ul>
+<li>
+<p>If you want to set a particular file to some branch&rsquo;s version on origin without disturbing other files in the branch you can use <code>git checkout origin/&lt;branch-name&gt; --path/to/the/file</code>.<br>
+For eg, if I want to set xyz.go file to the master version you can do:-<br>
+<code>git checkout origin/master --xyz.go</code></p>
+</li>
+<li>
+<p>Sometimes, we are not ready to commit yet but want to change the branch or we realise that we have been making changes in a wrong branch. In that case <code>git stash</code> can be useful. What is does is, it saves your current changes in a stack and makes the status clean (i.e no <code>diff</code>). Now you can change your branch or do whatever is needed, and then when you want those stashed changes back, you <code>apply</code> selected stash from the stack.</p>
+<ol>
+<li>To save current changes to the stack <code>git stash save &quot;message&quot;</code>.</li>
+<li><i class="far fa-square fa-fw" aria-hidden="true"></i> List all the saved changes in the stack <code>git stash list</code>.<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/2019-08-02-20-01-06.png"
+        data-srcset="/images/2019-08-02-20-01-06.png, /images/2019-08-02-20-01-06.png 1.5x, /images/2019-08-02-20-01-06.png 2x"
+        data-sizes="auto"
+        alt="/images/2019-08-02-20-01-06.png"
+        title="/images/2019-08-02-20-01-06.png" /></li>
+<li>To apply the selected stash <code>git stash apply &lt;stash id&gt;</code>.
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/2019-08-02-20-04-02.png"
+        data-srcset="/images/2019-08-02-20-04-02.png, /images/2019-08-02-20-04-02.png 1.5x, /images/2019-08-02-20-04-02.png 2x"
+        data-sizes="auto"
+        alt="/images/2019-08-02-20-04-02.png"
+        title="/images/2019-08-02-20-04-02.png" /></li>
+<li>If you want to apply last saved stash <code>git stash pop</code> (same concept as stack ADT)</li>
+<li>If you want to delete particular stash <code>git stash drop &lt;stash-id&gt;</code>.</li>
+<li>If you want to delete all the saved changes in you stash <code>git stash clear</code>.</li>
+</ol>
+</li>
+<li>
+<p>Cherry-picking in git:-</p>
+<p>In git if you have the commit ID of a commit you can use it in any branch/MR/PR.
+Steps:-</p>
+<ul>
+<li>Copy the commit ID of the commit that you want to use somewhere else.</li>
+<li>Go to the required branch, then do <code>git cherry-pick &lt;ID&gt;</code>.</li>
+<li>That commit will be added to the current branch.</li>
+</ul>
+</li>
+<li>
+<p>If you want to go back to a certain commit in git do :-<br>
+<code>Git reset --hard &lt;commit-hash&gt;</code></p>
+</li>
+<li>
+<p>If you want to undo the changes made in a certain commit do :-<br>
+<code>Git revert &lt;commit-hash&gt;</code></p>
+</li>
+<li>
+<p>If you want to create a new branch out of a remote branch you can use:-</p>
+<p><code>git checkout -b &lt;new-branch&gt; origin/&lt;source-branch&gt;</code><br>
+or, recently it is observed that, if you <code>git checkout &lt;branch&gt;</code> and if a branch with same name already exists in the origin, it will start tracking the branch of origin automatically.</p>
+</li>
+<li>
+<p>If a <code>feature</code>,<code>bug</code>,etc branch of yours is very behind than <code>develop</code> or <code>master</code> (whatever is the eventual target), then doing <code>merge</code> (by <code>git pull origin &lt;master/develop&gt;</code>) is less troublesome than <code>rebasing</code>. Although, under normal conditions <code>rebase</code> is better alternative to <code>merge</code> since it keeps the git history pristine.</p>
+</li>
+<li>
+<p>Running a command with <code>-n</code> flag tells what will happen when you run the command. It is like a test run.</p>
+</li>
+<li>
+<p>The untracked files can be removed using <code>git clean -f -d</code></p>
+</li>
+<li>
+<p>Synchronize the repo with the state of the repo on the origin: <code>git reset --hard &lt;origin-name&gt;</code></p>
+</li>
+</ul>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

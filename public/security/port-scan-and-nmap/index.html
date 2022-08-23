@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Enumeration using nmap - Souvik Haldar</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Enumeration using nmap" />
+<meta property="og:description" content="Introduction The de-facto standard for the first step in enumerating the target.
+Let&rsquo;s try to understand a few concepts.
+Port scanning TCP connect scan -sT If three-way handshake (SYN &ndash;&gt; SYN ACK &ndash;&gt; ACK) is complete on a TCP port, the port is considered open. Port scanning on port range 3388-3390 using netcat: nc -nvv -w 1 -z 10.11.1.220 3388-3390 Hence, if a port is OPEN, it will reply the incoming SYN request with SYN ACK request then the client will further send ACK to complete the handshake." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://souvikhaldar.in/security/port-scan-and-nmap/" /><meta property="article:section" content="security" />
+<meta property="article:published_time" content="2021-06-02T10:50:24+05:30" />
+<meta property="article:modified_time" content="2021-06-02T10:50:24+05:30" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Enumeration using nmap"/>
+<meta name="twitter:description" content="Introduction The de-facto standard for the first step in enumerating the target.
+Let&rsquo;s try to understand a few concepts.
+Port scanning TCP connect scan -sT If three-way handshake (SYN &ndash;&gt; SYN ACK &ndash;&gt; ACK) is complete on a TCP port, the port is considered open. Port scanning on port range 3388-3390 using netcat: nc -nvv -w 1 -z 10.11.1.220 3388-3390 Hence, if a port is OPEN, it will reply the incoming SYN request with SYN ACK request then the client will further send ACK to complete the handshake."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://souvikhaldar.in/security/port-scan-and-nmap/" /><link rel="prev" href="http://souvikhaldar.in/security/huntsman/" /><link rel="next" href="http://souvikhaldar.in/security/route_iphone_traffic_tor/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Enumeration using nmap",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/souvikhaldar.in\/security\/port-scan-and-nmap\/"
+        },"genre": "security","wordcount":  622 ,
+        "url": "http:\/\/souvikhaldar.in\/security\/port-scan-and-nmap\/","datePublished": "2021-06-02T10:50:24+05:30","dateModified": "2021-06-02T10:50:24+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Enumeration using nmap</h1><div class="content" id="content"><h2 id="introduction">Introduction</h2>
+<p>The de-facto standard for the first step in enumerating the target.<br>
+Let&rsquo;s try to understand a few concepts.</p>
+<h2 id="port-scanning">Port scanning</h2>
+<h3 id="tcp-connect-scan--st">TCP connect scan -sT</h3>
+<p>If three-way handshake (SYN &ndash;&gt; SYN ACK &ndash;&gt; ACK) is complete on a TCP port, the port is considered open.
+Port scanning on port range 3388-3390 using <code>netcat</code>:
+<code>nc -nvv -w 1 -z 10.11.1.220 3388-3390</code>
+Hence, if a port is OPEN, it will reply the incoming SYN request with SYN ACK request then the client will further send ACK to complete the handshake. But if the port is closed then the incoming SYN request is responded with a RST (reset) request.
+Now if the port is protected by a firewall, then the incoming SYN request is responded with nothing, hence indicating <strong>filtered</strong> port.</p>
+<h3 id="syn-scan--ss">SYN scan -sS</h3>
+<p>In this kind of the scan, nmap sends a TCP SYN request just like the TCP connect scan, but when it receives the SYN ACK response, instead of sending back ACK request to complete the three way handshake, it send RST request and hence the handshake is never complete. That&rsquo;s why is it also called as <em>Half-open</em> scan.<br>
+This is beneficial because it makes the scanning fast and also since the handshake is not complete hence this request does not get logged and detected by IDS too. But sometimes it can be problematic because the server might not handle such handshake.</p>
+<h3 id="udp-scan--su">UDP scan -sU</h3>
+<p>Since UDP is stateless, hence three way handshake is not required before establishing the communication. Hence UDP port scanning is different from TCP port scanning.
+Here, we send empty UDP packet to a port, the port, if open send the packet further to the application layer of OSI model and the response is crafted according to the application, but sometimes there is no response as well. But if the port is closed, we get ICMP <em>Port Unreachable</em> response.
+UDP port scanning using <code>netcat</code>:
+<code>nc -nv -w 1 -u -z 10.11.1.115 160-162</code></p>
+<h2 id="null--sn-fin--sf-and-xmas--sx-scan">NULL -sN, FIN -sF and Xmas -sX scan</h2>
+<p>These three are stealthier scans.
+NULL sends requests with no flag set and expects RST if is closed.<br>
+Similarly, FIN sends requests FIN flag set which is used for closing active connection and expects RST if port is closed and Xmas sends malformed TCP packet with same expectation.
+These are very good for firewall evasion.</p>
+<h2 id="measuring-inbound-and-outbound-traffic">Measuring inbound and outbound traffic</h2>
+<p>We can measure the inbound and outbound traffic to and from a machine using <code>iptables</code>.
+Set source:
+<code>sudo iptables -I INPUT 1 -s &lt;source-IP&gt; -j ACCEPT</code>
+Set destination:
+<code>sudo iptables -I OUTPUT 1 -d 10.11.1.220 -j ACCEPT</code></p>
+<p>Zero the packet and byte counter before testing, by:
+<code>sudo iptables -Z</code></p>
+<p>After doings tests (you can generate traffic using Nmap as well) you can check the statistics by:
+<code>sudo iptables -vn -L</code>
+(-n to enable numeric output, and -
+L to list the rules present in all chains)</p>
+<h2 id="ping-sweep">Ping sweep</h2>
+<p><code>Network Sweeping</code> is used to scan entire network for available machines. Use <code>-sn</code> flag in nmap.
+nmap does host discovery using:</p>
+<ol>
+<li><code>ICMP</code> echo request</li>
+<li>TCP SYN packet to 443</li>
+<li>TCP ACK to 80</li>
+<li>ICMP timestamp
+Eg. <code>nmap -sn 192.168.0.1-254</code></li>
+</ol>
+<h2 id="quick-tips">quick tips</h2>
+<ul>
+<li>For &ldquo;greppable&rdquo; nmap output use <code>-oG</code> flag.</li>
+<li>Use top twenty TCP ports with the &ndash;top-ports option and enable OS version detection, script scanning, and traceroute with -A</li>
+<li>OS fingerprinting is guessing the OS of a machine by matching it&rsquo;s returned packets with set of OS patterns. Use <code>-O</code> flag.</li>
+<li>Identify services running on specific ports by inspecting service banners ( -sV ) and
+running various OS and service enumeration scripts ( –A ) against the target.</li>
+<li>Nmap Scripting Engine (NSE) can launch user-created scripts in order to automate
+various scanning tasks, using <code>--script</code> flag.</li>
+</ul>
+<h3 id="references">References</h3>
+<ol>
+<li><a href="https://tryhackme.com/room/furthernmap" target="_blank" rel="noopener noreffer ">TryHackMe link</a></li>
+<li>PWK PDF</li>
+</ol>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

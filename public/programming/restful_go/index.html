@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Understanding REST and principles behind designing RESTful HTTP APIs in Go - Souvik Haldar</title><meta name="Description" content="This is my cool site"><meta property="og:title" content="Understanding REST and principles behind designing RESTful HTTP APIs in Go" />
+<meta property="og:description" content="What is REST REST, acronym for Representational State Transfer, is the architectural approach to building web services. Let&rsquo;s discuss a few characteristics of REST:
+REST is independent of any underlying protocol. i.e REST API can be built over any protocol like REST HTTP API which means RESTful API built over HTTP protocol. REST is independent of any specific implementation detail. i.e a REST API can be built on any language, tool, environment, etc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://souvikhaldar.in/programming/restful_go/" /><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2019-08-04T15:58:48+05:30" />
+<meta property="article:modified_time" content="2019-08-04T15:58:48+05:30" /><meta property="og:site_name" content="My cool site" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Understanding REST and principles behind designing RESTful HTTP APIs in Go"/>
+<meta name="twitter:description" content="What is REST REST, acronym for Representational State Transfer, is the architectural approach to building web services. Let&rsquo;s discuss a few characteristics of REST:
+REST is independent of any underlying protocol. i.e REST API can be built over any protocol like REST HTTP API which means RESTful API built over HTTP protocol. REST is independent of any specific implementation detail. i.e a REST API can be built on any language, tool, environment, etc."/>
+<meta name="application-name" content="My cool site">
+<meta name="apple-mobile-web-app-title" content="My cool site"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://souvikhaldar.in/programming/restful_go/" /><link rel="prev" href="http://souvikhaldar.in/programming/golang_intro/" /><link rel="next" href="http://souvikhaldar.in/programming/install_package_using_golang/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Understanding REST and principles behind designing RESTful HTTP APIs in Go",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/souvikhaldar.in\/programming\/restful_go\/"
+        },"genre": "programming","wordcount":  1861 ,
+        "url": "http:\/\/souvikhaldar.in\/programming\/restful_go\/","datePublished": "2019-08-04T15:58:48+05:30","dateModified": "2019-08-04T15:58:48+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "xxxx"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="fixed" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar">My cool site</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar">My cool site</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Understanding REST and principles behind designing RESTful HTTP APIs in Go</h1><div class="content" id="content"><h1 id="what-is-rest">What is REST</h1>
+<p>REST, acronym for Representational State Transfer, is the architectural approach to building web services. Let&rsquo;s discuss a few characteristics of REST:</p>
+<ul>
+<li>REST is independent of any underlying protocol. i.e REST API can be built over any protocol like REST HTTP API which means RESTful API built over HTTP protocol.</li>
+<li>REST is independent of any specific implementation detail. i.e a REST API can be built on any language, tool, environment, etc. Almost every language allows one to write a REST API. The participating Client and Server can be built, modified and scaled separately, as long as they communicate in a consistent manner.</li>
+</ul>
+<h1 id="design-principles-of-restful-http-apis">Design principles of RESTful HTTP APIs</h1>
+<ul>
+<li><strong>Statelessness</strong>: The participating client and server are not required to know the state of each other. Essentially, every request/response is independent and does not have any knowledge of the previous request/response.</li>
+<li>REST API endpoints are designed around <em>resources</em> which can be an object,service,data,etc. For example, an endpoint <code>/addCustomer</code> is invalid whereas <code>/customer</code> with POST verb is better suited because &lsquo;customer&rsquo; is a noun which is the resource here.(we&rsquo;ll discuss HTTP verbs later)</li>
+<li>A resource has an identifier in the URI which helps to uniquely identify the resource. Like <code>/customer/24</code> signifies the customer with a unique identifier <code>24</code>.</li>
+<li>The clients communicate with the service by exchanging representations of the resource. There are many exchange formats like XML,JSON,etc but these days JSON is heavily used (Javascript Object Notation).</li>
+<li>There are four basic HTTP verbs to communicate with the resources.
+<ol>
+<li><code>POST</code> : Create a new resource (non-idempotent in nature)</li>
+<li><code>PUT</code>: Update a resource or collection of resources (idempotent in nature)</li>
+<li><code>GET</code>: Retrieve a resource or collection of resources.</li>
+<li><code>DELETE</code>: Delete a resource or collection of resources.</li>
+</ol>
+</li>
+</ul>
+<h1 id="lets-start-building">Let&rsquo;s start building</h1>
+<p>In this guide, we will create a simple API which can perform CRUD operations (i.e <strong>C</strong>reate  <strong>R</strong>ead <strong>U</strong>pdate <strong>D</strong>elete ) on the &lsquo;customer&rsquo; resource.</p>
+<pre tabindex="0"><code>C --&gt; create a new customer instance (POST)  
+R --&gt; fetch a customer&#39;s details (GET)  
+U --&gt; update a customer&#39;s detail (PUT)  
+D --&gt; delete a customer&#39;s instance (DELETE)  
+</code></pre><p>The standard library of Go is really very powerful, you can write a full blown server by using just the <a href="https://golang.org/pkg/" target="_blank" rel="noopener noreffer ">standard library</a>!<br>
+I’m assuming your system is setup for writing Go programs, if not you can <a href="https://golang.org/doc/install" target="_blank" rel="noopener noreffer ">follow this link</a> and get it done.<br>
+Create a directory in the <code>$GOPATH/src/&lt;vcs-name&gt;/&lt;username&gt;/golang-server</code> or you can name it anything you want. I’m naming in <code>golang-server</code>.
+The above path is standard golang practice, but after the onset of <code>go modules</code> you can create the directory anywhere you want.<br>
+For me the path looks like:-<br>
+<code>/Users/souvik/Development/go/src/github.com/souvikhaldar/golang-server</code></p>
+<ol start="2">
+<li>
+<p>Create a file called <code>main.go</code> (you can name it whatever) at the root. This is where the <code>main</code> function resides.</p>
+</li>
+<li>
+<p>We can store data anywhere, but for persistent storage a database is always a good option. In this guide, we will be using <a href="https://www.postgresql.org/" target="_blank" rel="noopener noreffer ">PostgreSQL</a>.<br>
+<em>So let&rsquo;s setup the database connection now.</em>  <br>
+(i) Install postgresql on your system. Follow this <a href="https://www.postgresqltutorial.com/install-postgresql/" target="_blank" rel="noopener noreffer ">link</a><br>
+(ii) Run <code>psql -U postgres</code> on the terminal. (NOTE: <code>postgres</code> is a default role automatically created, if it&rsquo;s not you need to create it. Also, my commands are for mac, but other OSs should be pretty similar)<br>
+(iii) Create a new database. <code>create database guide</code>, I&rsquo;m naming it guide, you can name it anything.<br>
+(iv) Create a simple table with two columns <code>customer_id</code> and <code>customer_name</code> by running <code>create table customer(customer_id int,customer_name text);</code> after connecting the <code>guide</code> database (do <code>\c guide</code>)<br>
+(v) We need a third party library for better database handling. Use <a href="https://github.com/kardianos/govendor" target="_blank" rel="noopener noreffer ">govendor</a> for dependency management hence install it this way:-<br>
+(a)  At the project root- <code>govendor init</code><br>
+(b) <code>govendor fetch github.com/lib/pq</code><br>
+(Note: If we would have not used govendor for dependency management we could have installed using- <code>go get -u github.com/lib/pq</code> but using one is always a better idea)</p>
+<p>(vi) <code>init</code> method in golang is the method that runs first even before running <code>main</code> hence we will setup the database connection there.</p>
+<pre tabindex="0"><code>func init() {
+    psqlInfo := fmt.Sprintf(&#34;host=%s port=%d user=%sdbname=%s sslmode=disable&#34;, host, port, user, dbname)
+    fmt.Println(&#34;conection string: &#34;, psqlInfo)
+    var err error
+    dbDriver, err = sql.Open(&#34;postgres&#34;, psqlInfo)
+    if err != nil {
+        panic(err)
+    }
+    err = dbDriver.Ping()
+    if err != nil {
+        panic(err)
+    }
+    fmt.Println(&#34;Successfully connected to postgres!&#34;)
+}
+</code></pre></li>
+<li>
+<p>First of all, let&rsquo;s register all the handlers that would be performing the <code>CRUD</code> operations. We are using a very efficient third-party router called <a href="https://github.com/gorilla/mux" target="_blank" rel="noopener noreffer ">&ldquo;gorilla mux&rdquo;</a>.</p>
+<pre tabindex="0"><code>router := mux.NewRouter()
+router.HandleFunc(&#34;/customer&#34;, addCustomer).Methods(&#34;POST&#34;)
+router.HandleFunc(&#34;/customer/{id}&#34;, updateCustomer).Methods(&#34;PUT&#34;)
+router.HandleFunc(&#34;/customer/{id}&#34;, deleteCustomer).Methods(&#34;DELETE&#34;)
+router.HandleFunc(&#34;/customer&#34;, fetchCustomers).Methods(&#34;GET&#34;)
+log.Fatal(http.ListenAndServe(&#34;:8192&#34;, router))
+</code></pre><p>We&rsquo;ve provided <code>8192</code> as the port on which the server should run run, but in case that port is already used by some other service, choose any other port, like <code>8193</code>,<code>8188</code>,etc.</p>
+</li>
+<li>
+<p><strong>POST</strong><br>
+<strong>Add a new resource</strong><br>
+Now let&rsquo;s write the handler for each of the operations.
+Below is the handler for adding a new customer&rsquo;s details which will essentially insert a new instance of customer to our database.</p>
+<pre tabindex="0"><code>func addCustomer(w http.ResponseWriter, r *http.Request) {
+    var requestbody customer
+    if err := json.NewDecoder(r.Body).Decode(&amp;requestbody); err != nil {
+        http.Error(w, err.Error(), 500)
+        return
+    }
+    fmt.Println(&#34;Data recieved: &#34;, requestbody)
+    if _, err := dbDriver.Exec(&#34;INSERT INTO customer(customer_id,customer_name) VALUES($1,$2)&#34;, requestbody.CustomerID, requestbody.CustomerName); err != nil {
+        fmt.Println(&#34;Error in inserting to the database&#34;)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+    fmt.Fprintln(w, &#34;Successfully inserted: &#34;, requestbody)
+}
+</code></pre><p>What it is doing is, first it is reading the request which contains a JSON data as body and unmarshalling it into <code>customer</code> struct, then it is making <code>INSERT</code>  query to the database to add the data.</p>
+<p>Sample request:-</p>
+<pre tabindex="0"><code>curl --location --request POST &#34;localhost:8192/customer&#34; \
+--header &#34;Content-Type: application/json&#34; \
+--data &#34;{
+    \&#34;CustomerID\&#34;:4,
+    \&#34;CustomerName\&#34;: \&#34;souvik\&#34;
+}&#34;
+</code></pre></li>
+<li>
+<p><strong>PUT</strong><br>
+The code for updating the user is as follows:-</p>
+<pre tabindex="0"><code>func updateCustomer(w http.ResponseWriter, r *http.Request) {
+    v := mux.Vars(r)
+    idS := v[&#34;id&#34;]
+    id, _ := strconv.Atoi(idS)
+    fmt.Println(&#34;Updating customer: &#34;, id)
+    var requestbody customerUpdate
+    if err := json.NewDecoder(r.Body).Decode(&amp;requestbody); err != nil {
+        http.Error(w, err.Error(), 500)
+        return
+    }
+    if _, err := dbDriver.Exec(&#34;UPDATE customer set customer_name=$1 where customer_id=$2&#34;, requestbody.CustomerName, id); err != nil {
+        fmt.Println(&#34;Error in updating: &#34;, err)
+        http.Error(w, err.Error(), 500)
+    }
+    fmt.Fprintln(w, &#34;Succesfully updated user&#34;)
+}
+</code></pre><p>We pass the data to be updated in the <code>body</code> of the request and customer ID of the customer whose details are being updated is passed in the URL.<br>
+(NOTE: later when you see the request you will understand it better, for now focus on the logic.)</p>
+<p>Sample request:-</p>
+<pre tabindex="0"><code>curl --location --request PUT &#34;localhost:8192/customer/4&#34; \
+--header &#34;Content-Type: application/json&#34; \
+--data &#34;{
+    \&#34;CustomerName\&#34;:\&#34;haldar\&#34;
+}&#34;
+</code></pre></li>
+<li>
+<p><strong>DELETE</strong><br>
+Let&rsquo;s try to <code>DELETE</code> a resource now.</p>
+<pre tabindex="0"><code>func deleteCustomer(w http.ResponseWriter, r *http.Request) {
+    v := mux.Vars(r)
+    id := v[&#34;id&#34;]
+    fmt.Println(&#34;Deleting user: &#34;, id)
+    if _, err := dbDriver.Exec(&#34;DELETE FROM customer where customer_id=$1&#34;, id); err != nil {
+        fmt.Println(&#34;Unable to delete the customer: &#34;, err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+    fmt.Fprintln(w, &#34;Successfully deleted!&#34;)
+}
+</code></pre><p>In the above code, we are passing the ID of the customer to be deleted from our records. The query for deletion the simple <code>DELETE</code> command.</p>
+<p>Sample request:-</p>
+<pre tabindex="0"><code>curl --location --request DELETE &#34;localhost:8192/customer/4&#34;
+</code></pre></li>
+<li>
+<p><strong>GET</strong><br>
+Now finally, let&rsquo;s try to fetch the details of all customer data in JSON format.</p>
+<pre tabindex="0"><code>func fetchCustomers(w http.ResponseWriter, r *http.Request) {
+    fmt.Println(&#34;Fetching all customers&#34;)
+    rows, err := dbDriver.Query(&#34;SELECT * from customer&#34;)
+    if err != nil {
+        fmt.Println(&#34;Unable to read the table: &#34;, err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+    var customers []customer
+    defer rows.Close()
+    for rows.Next() {
+        var c customer
+        if err := rows.Scan(&amp;c.CustomerID, &amp;c.CustomerName); err != nil {
+            fmt.Println(&#34;Unable to scan&#34;)
+        }
+        customers = append(customers, c)
+    }
+    customerJSON, err := json.Marshal(customers)
+    if err != nil {
+        fmt.Println(&#34;Unable to marshall the data: &#34;, err)
+        http.Error(w, err.Error(), 500)
+        return
+    }
+    fmt.Println(&#34;Customers: &#34;, customers)
+    fmt.Fprintln(w, string(customerJSON))
+}
+</code></pre><p>In the above code, we are querying for all the customer records, accessing them one by one and appending to a slice and finally serializing them into JSON using the <code>Marshall</code> method.</p>
+<p>Sample request:-</p>
+<pre tabindex="0"><code>curl --location --request GET &#34;localhost:8192/customer&#34;
+</code></pre></li>
+</ol>
+<hr>
+<p>The final code looks like:-</p>
+<pre tabindex="0"><code>package main
+
+import (
+	&#34;database/sql&#34;
+	&#34;encoding/json&#34;
+	&#34;fmt&#34;
+	&#34;log&#34;
+	&#34;net/http&#34;
+	&#34;strconv&#34;
+
+	&#34;github.com/gorilla/mux&#34;
+	_ &#34;github.com/lib/pq&#34;
+)
+
+const (
+	host   = &#34;localhost&#34;
+	port   = 5432
+	user   = &#34;postgres&#34;
+	dbname = &#34;guide&#34;
+)
+
+var dbDriver *sql.DB
+
+func init() {
+	psqlInfo := fmt.Sprintf(&#34;host=%s port=%d user=%s dbname=%s sslmode=disable&#34;, host, port, user, dbname)
+	var err error
+	dbDriver, err = sql.Open(&#34;postgres&#34;, psqlInfo)
+	if err != nil {
+		panic(err)
+	}
+
+	err = dbDriver.Ping()
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(&#34;Successfully connected to postgres!&#34;)
+}
+
+type customer struct {
+	CustomerID   int32
+	CustomerName string
+}
+type customerUpdate struct {
+	CustomerName string
+}
+
+// Adding a new customer to the database
+func addCustomer(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(&#34;Adding a new customer&#34;)
+	var requestbody customer
+	if err := json.NewDecoder(r.Body).Decode(&amp;requestbody); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	fmt.Println(&#34;Data recieved: &#34;, requestbody)
+	if _, err := dbDriver.Exec(&#34;INSERT INTO customer(customer_id,customer_name) VALUES($1,$2)&#34;, requestbody.CustomerID, requestbody.CustomerName); err != nil {
+		fmt.Println(&#34;Error in inserting to the database&#34;)
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	fmt.Fprintln(w, &#34;Successfully inserted: &#34;, requestbody)
+}
+
+// Update the details of a customer
+func updateCustomer(w http.ResponseWriter, r *http.Request) {
+	v := mux.Vars(r)
+	idS := v[&#34;id&#34;]
+	id, _ := strconv.Atoi(idS)
+	fmt.Println(&#34;Updating customer: &#34;, id)
+	var requestbody customerUpdate
+	if err := json.NewDecoder(r.Body).Decode(&amp;requestbody); err != nil {
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	if _, err := dbDriver.Exec(&#34;UPDATE customer set customer_name=$1 where customer_id=$2&#34;, requestbody.CustomerName, id); err != nil {
+		fmt.Println(&#34;Error in updating: &#34;, err)
+		http.Error(w, err.Error(), 500)
+	}
+	fmt.Fprintln(w, &#34;Succesfully updated user&#34;)
+}
+
+func deleteCustomer(w http.ResponseWriter, r *http.Request) {
+	v := mux.Vars(r)
+	id := v[&#34;id&#34;]
+	fmt.Println(&#34;Deleting user: &#34;, id)
+	if _, err := dbDriver.Exec(&#34;DELETE FROM customer where customer_id=$1&#34;, id); err != nil {
+		fmt.Println(&#34;Unable to delete the customer: &#34;, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	fmt.Fprintln(w, &#34;Successfully deleted!&#34;)
+}
+
+func fetchCustomers(w http.ResponseWriter, r *http.Request) {
+	fmt.Println(&#34;Fetching all customers&#34;)
+	rows, err := dbDriver.Query(&#34;SELECT * from customer&#34;)
+	if err != nil {
+		fmt.Println(&#34;Unable to read the table: &#34;, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	var customers []customer
+	defer rows.Close()
+	for rows.Next() {
+		var c customer
+		if err := rows.Scan(&amp;c.CustomerID, &amp;c.CustomerName); err != nil {
+			fmt.Println(&#34;Unable to scan&#34;)
+		}
+		customers = append(customers, c)
+	}
+	customerJSON, err := json.Marshal(customers)
+	if err != nil {
+		fmt.Println(&#34;Unable to marshall the data: &#34;, err)
+		http.Error(w, err.Error(), 500)
+		return
+	}
+	fmt.Println(&#34;Customers: &#34;, customers)
+	fmt.Fprintln(w, string(customerJSON))
+}
+
+func main() {
+	router := mux.NewRouter()
+	router.HandleFunc(&#34;/customer&#34;, addCustomer).Methods(&#34;POST&#34;)
+	router.HandleFunc(&#34;/customer/{id}&#34;, updateCustomer).Methods(&#34;PUT&#34;)
+	router.HandleFunc(&#34;/customer/{id}&#34;, deleteCustomer).Methods(&#34;DELETE&#34;)
+	router.HandleFunc(&#34;/customer&#34;, fetchCustomers).Methods(&#34;GET&#34;)
+	log.Fatal(http.ListenAndServe(&#34;:8192&#34;, router))
+}
+</code></pre><p>You can checkout the entire code in this <a href="https://github.com/souvikhaldar/golang-API-guide" target="_blank" rel="noopener noreffer ">repository</a>.</p>
+<p>Now try the endpoints on <code>Postman</code> or <code>curl</code>.<br>
+<strong>Link to <a href="https://documenter.getpostman.com/view/1921454/SVYrsdwf" target="_blank" rel="noopener noreffer ">API documentation</a> is here.</strong></p>
+<p>You can peek into the database once to see/cross-check how our data is stored which is the horse&rsquo;s mouth!</p>
+<ul>
+<li><code>psql -U postgres -d guide</code> on the terminal.</li>
+<li><code>select * from customer</code> to see all the data that we&rsquo;ve posted via our API.</li>
+</ul>
+<h1 id="conclusion">Conclusion</h1>
+<p>So, in just 130 lines of code we are created a fully functioning RESTful API performing all four of the CRUD operations in the most dominating language of this segment! <strong>kudos!</strong><br>
+As further steps of deployment, you can write a simple <a href="https://www.ansible.com/" target="_blank" rel="noopener noreffer ">Ansible</a> script and a corresponding <a href="https://fedoramagazine.org/systemd-getting-a-grip-on-units/" target="_blank" rel="noopener noreffer ">unit file</a> which will keep your webserver running running and make <code>systemd</code> take away all the pain of maintenance! As an example, you can have a look at <a href="https://github.com/souvikhaldar/replayd" target="_blank" rel="noopener noreffer ">this</a> repository where I&rsquo;ve implemented a server to store data in <code>in-memory buffer</code> and deployed it to cloud using Ansible and an unit file.<br>
+Welcome, to the world of Go, hope this article got you started and now you can keep <strong>GOing</strong>.</p>
+</div></div></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line">Powered by <a href="https://gohugo.io/" target="_blank" rel="noopener noreffer" title="Hugo 0.101.0">Hugo</a> | Theme - <a href="https://github.com/dillonzq/LoveIt" target="_blank" rel="noopener noreffer" title="LoveIt 0.2.11"><i class="far fa-kiss-wink-heart fa-fw" aria-hidden="true"></i> LoveIt</a>
+                </div><div class="footer-line" itemscope itemtype="http://schema.org/CreativeWork"><i class="far fa-copyright fa-fw" aria-hidden="true"></i><span itemprop="copyrightYear">2022</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">xxxx</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
