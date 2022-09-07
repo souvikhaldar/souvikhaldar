@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=80&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Brief Walkthrough of concurrency model in Go - Souvik Haldar</title><meta name="Description" content="Talks about programming, cyber security, networking, productivity and critics"><meta property="og:title" content="Brief Walkthrough of concurrency model in Go" />
+<meta property="og:description" content="Introduction Around the year 2005, CPU manufacturers reached the limit of increasing the speed of the processors physically, which may also be thought of as reaching the saturation point of Moore’s Law. Hence they started adding more cores to the CPU viz. Dual-Core processor, Quad Core processor, etc., for enhancing the performance. Unfortunately, older languages are not very efficient at exploiting the benefits of the modern hardware comprising of multi-core CPUs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost/programming/go/" /><meta property="og:image" content="//localhost/logo.png"/><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2019-03-24T12:13:31+05:30" />
+<meta property="article:modified_time" content="2019-03-24T12:13:31+05:30" /><meta property="og:site_name" content="Souvik Haldar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//localhost/logo.png"/>
+
+<meta name="twitter:title" content="Brief Walkthrough of concurrency model in Go"/>
+<meta name="twitter:description" content="Introduction Around the year 2005, CPU manufacturers reached the limit of increasing the speed of the processors physically, which may also be thought of as reaching the saturation point of Moore’s Law. Hence they started adding more cores to the CPU viz. Dual-Core processor, Quad Core processor, etc., for enhancing the performance. Unfortunately, older languages are not very efficient at exploiting the benefits of the modern hardware comprising of multi-core CPUs."/>
+<meta name="application-name" content="A place for Souvik&#39;s thoughts">
+<meta name="apple-mobile-web-app-title" content="A place for Souvik&#39;s thoughts"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost/programming/go/" /><link rel="next" href="//localhost/programming/prometheus/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Brief Walkthrough of concurrency model in Go",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/\/localhost\/programming\/go\/"
+        },"genre": "programming","wordcount":  955 ,
+        "url": "\/\/localhost\/programming\/go\/","datePublished": "2019-03-24T12:13:31+05:30","dateModified": "2019-03-24T12:13:31+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Souvik Haldar"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about"> About </a><a class="menu-item" href="/security/"> Security </a><a class="menu-item" href="/articles/"> Articles </a><a class="menu-item" href="/events/"> Events </a><a class="menu-item" href="/networking/"> Networking </a><a class="menu-item" href="/programming/"> Programming </a><a class="menu-item" href="/tools/"> Tools </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about" title="">About</a><a class="menu-item" href="/security/" title="">Security</a><a class="menu-item" href="/articles/" title="">Articles</a><a class="menu-item" href="/events/" title="">Events</a><a class="menu-item" href="/networking/" title="">Networking</a><a class="menu-item" href="/programming/" title="">Programming</a><a class="menu-item" href="/tools/" title="">Tools</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Brief Walkthrough of concurrency model in Go</h1><div class="content" id="content"><h2 id="introduction">Introduction</h2>
+<p>Around the year 2005, CPU manufacturers reached the limit of increasing the speed of the processors physically, which may also be thought of as reaching the saturation point of Moore’s Law. Hence they started adding more cores to the CPU viz. Dual-Core processor, Quad Core processor, etc., for enhancing the performance. Unfortunately, older languages are not very efficient at exploiting the benefits of the modern hardware comprising of multi-core CPUs. Here, Go fills the need by having concurrency support built in, which can very efficiently make use of the multiple cores for better performance. This article is a high level and brief walkthrough of the concurrency model of Go.</p>
+<h2 id="concurrency-in-go">Concurrency in Go</h2>
+<p>Goroutines are lightweight threads that are managed by the Go runtime. go f(x,y) starts are new goroutine running f(x,y).</p>
+<p>Simple example :</p>
+<p><script type="application/javascript" src="https://gist.github.com/souvikhaldar/39138b49874a491d00d89ad245c23e81.js"></script>
+
+Playground- <a href="https://play.golang.org/p/f0sLl05L4f6" target="_blank" rel="noopener noreffer ">https://play.golang.org/p/f0sLl05L4f6</a></p>
+<p>The code above will print “world” and “hello” five times after an interval of 100 milliseconds in a random manner as function <code>say</code> would be printing the argument string in different goroutines. The lightweightedness of goroutines can be established with the fact that a typical goroutine takes 4 KB of memory on the Stack whereas a typical thread in Java takes about 1024 KB! Channels are the medium through which data is shared between goroutines.</p>
+<pre><code>c &lt;- v // the data v is sent to channel 
+c v := &lt;- c // the data from channel c is stored in variable v
+</code></pre>
+<p>By default, sending to a channel and receiving from a channel is blocked until they are ready, this makes the goroutines synchronized without using explicit locks or conditions. So, if you want a goroutine to finish at some point, you can wait at that point by reading from an unbuffered channel, to which you pass a value only when the goroutine is about to finish it&rsquo;s task. Receivers always block until there is data to receive. As and when you send a value to the unbuffered channel, the point where the execution was paused because the unbuffered channel was waiting to read a value, get&rsquo;s the value!</p>
+<pre tabindex="0"><code>c := make(chan int)  // Allocate a channel.
+// Start the sort in a goroutine; when it completes, signal on the channel.
+go func() {
+    list.Sort()
+    c &lt;- 1  // Send a signal; value does not matter.
+}()
+doSomethingForAWhile()
+&lt;-c   // Wait for sort to finish; discard sent value.
+</code></pre><p>(source- <em>Effective Go</em>)</p>
+<p>Channels can be buffered as well. If you provide a second argument (buffer length) to the make command for a channel it becomes buffered, otherwise unbuffered.</p>
+<pre><code>UnbufCh := make(chan int) // creating an unbuffered channel 
+bufCh := make(chan int,5) // creating a buffered channel of buffer length 5
+</code></pre>
+<p>Sending to a buffered channel is blocked when it is full, similarly reading from a buffered channel is blocked until it is empty. Overfilling a buffered channel causes error- fatal error: all goroutines are asleep — deadlock!</p>
+<p>An example of overfilling a buffered channel is :</p>
+<script type="application/javascript" src="https://gist.github.com/souvikhaldar/857d012f512b8065c77a881107728864.js"></script>
+
+<p>Playground — <a href="https://play.golang.org/p/zGJok8HZcMp" target="_blank" rel="noopener noreffer ">https://play.golang.org/p/zGJok8HZcMp</a></p>
+<p>We can loop over a channel using range keyword. Hence, closing the channel from the sender side is advised so that loop the receiver can break the loop when the sender has nothing more to send.</p>
+<script type="application/javascript" src="https://gist.github.com/souvikhaldar/745719bd21a0b2e610d900c08a51a97d.js"></script>
+
+<p>Playground — <a href="https://play.golang.org/p/HO0TrtCgaGl" target="_blank" rel="noopener noreffer ">https://play.golang.org/p/HO0TrtCgaGl</a></p>
+<p>The sender to a channel can close the channel indicating that it has nothing more to send. To check if a channel is closed we can do:</p>
+<p>Val, ok := &lt;- c // if channel c is closed ok will be returned false</p>
+<p><em>Note: Only sender should close a channel and never the receiver because sending on a closed channel can cause panic. Also, closing is not mandatory but useful when the receiver is looping over the received data.</em></p>
+<p>select statement is like switch, but for channels. A select statement makes a goroutine wait on multiple channels. It blocks the execution unless one of its case becomes true and then executes that. If multiple cases are ready then select chooses one at random. The default case runs when no other case is true.</p>
+<p>An empty select statement blocks the flow of execution further viz select{} Example:</p>
+<script type="application/javascript" src="https://gist.github.com/souvikhaldar/96b5bc938eeb3a65eab632310e574f7b.js"></script>
+
+<p>Here the quit case in the select statement becomes true only after 0 is sent to the quit channel, causing the program to return. Playground — <a href="https://play.golang.org/p/pYTwi-SNiIG" target="_blank" rel="noopener noreffer ">https://play.golang.org/p/pYTwi-SNiIG</a></p>
+<p>For sharing data among goroutines, channels serve the purpose well. But often, we just need to make access for certain variable (also called critical section) mutually exclusive for the goroutines to avoid an unwanted scenario called Race Condition.</p>
+<p><em>A Race Condition is a condition in which more than one process (threads, here goroutines) tries to access shared data (critical section) causing inconsistency.</em></p>
+<p>Conventionally, the data structure used for providing mutual exclusion is called mutex. Go’s standard library provides this feature with the help of sync.Mutex and its two methods Lock and Unlock. We make sure that when a goroutine enters a critical section we lock entry to this for other goroutines using Lock and at the moment the entered goroutine leaves the critical section, we Unlock it so the next goroutine can now enter it and plausible conflicts are avoided.</p>
+<pre><code>sync.Mutex.Lock() 
+// &lt;Critical Section&gt;
+sync.Mutex.Unlock()
+</code></pre>
+<p>Sample code:</p>
+<script type="application/javascript" src="https://gist.github.com/souvikhaldar/2247050a6df3c3f1340a1a942dfb45cd.js"></script>
+
+<p>In the playground — <a href="https://play.golang.org/p/REkXEEoNdap" target="_blank" rel="noopener noreffer ">https://play.golang.org/p/REkXEEoNdap</a></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>Hence, we see that the concurrency support in Go is simple and convenient yet powerful. This model of concurrency as the first-class citizen in Go has gained incredible popularity and made it the language of choice for most modern progressive startups as well as big giants like Netflix, Uber, Slack, Medium, Google, etc. Hope this simple walkthrough helped you get started with the concurrency model in Go; for further understanding, you can watch this amazing video. Happy coding!</p>
+<p><em>This article was originally published in the January edition of Hakin9 magazine. Vol. 13. №10.</em></p>
+<p><em>Buy- <a href="https://hakin9.org/product/introduction-to-ethical-hacking-become-the-owner-of-network/" target="_blank" rel="noopener noreffer ">https://hakin9.org/product/introduction-to-ethical-hacking-become-the-owner-of-network/</a></em></p>
+</div></div></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Souvik Haldar","id-2":"Souvik Haldar"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

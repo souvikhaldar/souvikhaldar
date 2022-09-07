@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Events on Souvik Haldar</title>
+    <link>//localhost/events/</link>
+    <description>Recent content in Events on Souvik Haldar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>souvikhaldar32@gmail.com (Souvik Haldar)</managingEditor>
+    <webMaster>souvikhaldar32@gmail.com (Souvik Haldar)</webMaster>
+    <lastBuildDate>Mon, 03 Feb 2020 23:16:27 +0530</lastBuildDate><atom:link href="//localhost/events/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>gRPC Deep Dive: How to create a complete service in Go | CNCF Kolkata | 1.2.20</title>
+      <link>//localhost/events/grpccncf/</link>
+      <pubDate>Mon, 03 Feb 2020 23:16:27 +0530</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>//localhost/events/grpccncf/</guid>
+      <description>Link to video coverage of the event
+Link to the presentation</description>
+    </item>
+    
+    <item>
+      <title>Kolkata Clojure meetup: Web Development in Clojure</title>
+      <link>//localhost/events/redirector/</link>
+      <pubDate>Sun, 08 Dec 2019 20:36:12 +0530</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>//localhost/events/redirector/</guid>
+      <description>I talked about building a web service in Clojure. I built a URL-shortening service for the same. The presentation can be found here.
+Description of the project.
+Redirector: URL shortening service This is a minimalistic URL shortening service which can shrink your ugly/large URL to a beautiful short URL.
+Installation Clone the repository from here Then run (-main) which is located in core.clj.
+Usage It should be running on localhost:3000.</description>
+    </item>
+    
+    <item>
+      <title>Meetup on microservices architectures and Implementation in Golang</title>
+      <link>//localhost/events/micro/</link>
+      <pubDate>Sun, 08 Dec 2019 20:29:28 +0530</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>//localhost/events/micro/</guid>
+      <description>On 7th December, 2019, Skillenza , in association with Microsoft , organized a meetup on &amp;ldquo;Microservices Architecture&amp;rdquo; and I had the opportunity to address the same, at Offbeat CCU Kolkata.
+The topics I covered are:
+What is &amp;ldquo;microservices architecture&amp;rdquo; the advantages and disadvantages typical structure of a microservice Basic concepts of Distributed Systems (CAP theorem, Quorum, etc) Brief discussion of Go programming languages why is it the most suitable language What is Remote Procedural Call (RPC) Implementation of a simple microservice using go-micro framework written in golang It was really great to have participants who were highly enthusiastic, curious and diverse.</description>
+    </item>
+    
+    <item>
+      <title>Pycon India 2019, Chennai</title>
+      <link>//localhost/events/pycon_day1/</link>
+      <pubDate>Sat, 12 Oct 2019 09:18:55 +0530</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>//localhost/events/pycon_day1/</guid>
+      <description>PyCon India, the Python conference, is organized once every year, in some city of India and this year it was organized in the city of Chennai.
+It was the 11th iteration of annual gathering of Pythonistas. It&amp;rsquo;s a two-day conference with talks ranging from data science, machine learning to cyber security, graphQL,etc, i.e all the genres where python is being used extensively. The venue for PyCon in Chennai is the convention centre of Chennai Trade Centre.</description>
+    </item>
+    
+  </channel>
+</rss>

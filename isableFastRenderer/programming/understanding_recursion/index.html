@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=80&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Understanding Recursion - Souvik Haldar</title><meta name="Description" content="Talks about programming, cyber security, networking, productivity and critics"><meta property="og:title" content="Understanding Recursion" />
+<meta property="og:description" content="Introduction Recursion is often regarded as the one of the most complex concepts to understand in computer programming. IMHO, recursion is the &ldquo;building block&rdquo; of Functional programming, creating highly used data structures like Tree and an elegant way of writing code in general. So in this blog I&rsquo;ll try to go through the basics and later solve a few problems to explain the concept in a better way. So, let&rsquo;s get started!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="//localhost/programming/understanding_recursion/" /><meta property="og:image" content="//localhost/logo.png"/><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2019-06-23T18:22:25+05:30" />
+<meta property="article:modified_time" content="2019-06-23T18:22:25+05:30" /><meta property="og:site_name" content="Souvik Haldar" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="//localhost/logo.png"/>
+
+<meta name="twitter:title" content="Understanding Recursion"/>
+<meta name="twitter:description" content="Introduction Recursion is often regarded as the one of the most complex concepts to understand in computer programming. IMHO, recursion is the &ldquo;building block&rdquo; of Functional programming, creating highly used data structures like Tree and an elegant way of writing code in general. So in this blog I&rsquo;ll try to go through the basics and later solve a few problems to explain the concept in a better way. So, let&rsquo;s get started!"/>
+<meta name="application-name" content="A place for Souvik&#39;s thoughts">
+<meta name="apple-mobile-web-app-title" content="A place for Souvik&#39;s thoughts"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="//localhost/programming/understanding_recursion/" /><link rel="prev" href="//localhost/programming/haskell_1/" /><link rel="next" href="//localhost/programming/git_tips_and_tricks/" /><link rel="stylesheet" href="/css/style.min.css"><link rel="preload" href="/lib/fontawesome-free/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"></noscript><link rel="preload" href="/lib/animate/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="/lib/animate/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Understanding Recursion",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "\/\/localhost\/programming\/understanding_recursion\/"
+        },"genre": "programming","wordcount":  734 ,
+        "url": "\/\/localhost\/programming\/understanding_recursion\/","datePublished": "2019-06-23T18:22:25+05:30","dateModified": "2019-06-23T18:22:25+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Souvik Haldar"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Souvik Haldar"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about"> About </a><a class="menu-item" href="/security/"> Security </a><a class="menu-item" href="/articles/"> Articles </a><a class="menu-item" href="/events/"> Events </a><a class="menu-item" href="/networking/"> Networking </a><a class="menu-item" href="/programming/"> Programming </a><a class="menu-item" href="/tools/"> Tools </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Souvik Haldar"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about" title="">About</a><a class="menu-item" href="/security/" title="">Security</a><a class="menu-item" href="/articles/" title="">Articles</a><a class="menu-item" href="/events/" title="">Events</a><a class="menu-item" href="/networking/" title="">Networking</a><a class="menu-item" href="/programming/" title="">Programming</a><a class="menu-item" href="/tools/" title="">Tools</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Understanding Recursion</h1><div class="content" id="content"><h2 id="introduction">Introduction</h2>
+<p>Recursion is often regarded as the one of the most complex concepts to understand in computer programming. IMHO, recursion is the &ldquo;building block&rdquo; of Functional programming, creating highly used data structures like Tree and an elegant way of writing code in general. So in this blog I&rsquo;ll try to go through the basics and later solve a few problems to explain the concept in a better way. So, let&rsquo;s get started!</p>
+<h2 id="what-is-recusion">What is Recusion</h2>
+<p>Recursion is a methodology of problem solving, where we get the solution of a problem by breaking it down to sub-problems and keep breaking it till we reach a point where we can&rsquo;t break it any further (also known as base condition). Once base condition is reached, we handle it then start returning the solution of the sub-problem state that we are in, to the caller sub-problem state (i.e the parent).
+Hence, this way we can solve the overall problem, by solving the sub-problems.<br>
+This is implemented by writing a function that calls itself, with a subset of problem set passed as argument each time, and hence keep breaking the problem.</p>
+<h2 id="applications-of-recursion">Applications of Recursion</h2>
+<ol>
+<li>Dynamic Programming</li>
+<li>Divide and Conquer</li>
+<li>Backtracking</li>
+<li>Tree traversal</li>
+</ol>
+<h2 id="some-problems-on-recursion">Some problems on recursion</h2>
+<p>Now let&rsquo;s solve some problems based on recursion, because often examples are best way to understand a concept.</p>
+<ul>
+<li>
+<p>Write a recursive function to print all numbers from N to 1 for a given number N.</p>
+<pre tabindex="0"><code>def printN(N):
+    if N == 0:
+        return
+    print(N)
+    printN(N-1)
+N = int(input(&#34;Enter N:&#34;))
+printN(N)
+</code></pre><p>In the above code, we pass number N by subtracting 1 from it each time, as argument to the function <code>printN</code> and it keeps printing it, untill it hits the <code>base condition</code> when N becomes equal to 1.</p>
+<p>This is also the case of <code>tail recursion</code> since we are performing some operation (in this case printing) before we recursively call the funtion <code>printN</code>. So <code>tail recursive</code> functions are those functions in which recursive calls are last thing that happens in the function. <code>Tail recursion</code> is similar to <code>loop</code>.<br>
+If we wanted to print 1 to N, then we would place <code>print</code> after the recursive call, so that the function stack reaches the based condition when <code>N == 1</code>, then starts performing the operations (here printing) as stored in the function stack. This is called <code>head recursion</code>. In <code>head recursion</code> state is saved before making next call.</p>
+<pre tabindex="0"><code>def print_one_to_n(N):
+    if N == 0:
+        return
+    print_one_to_n(N-1)
+    print(N)
+</code></pre><p><code>Tail recursion</code> is faster than <code>head recursion</code> because of a concept called <a href="https://www.geeksforgeeks.org/tail-call-elimination/" target="_blank" rel="noopener noreffer "><code>tail call elimination</code></a> (or Tail Call Optimization), in which the compiler essentially converts the recursion to a loop. <code>Quick sort</code> uses tail recursion, hence is faster than <code>Merge sort</code>.</p>
+<p>Hence, making the above <code>print_one_to_n</code> function a tail recursive one by this way:-</p>
+<pre tabindex="0"><code>def print_one_to_n(n,i=1):
+    if n == 0:
+        return
+    print(i)
+    print_one_to_n(n-1,i+1)
+</code></pre></li>
+<li>
+<p>Write a recursive function to check if a string is palindrome or not.</p>
+<pre tabindex="0"><code>def palindrome(s):
+    if len(s) &lt;= 1:
+        return True
+    if s[0] != s[-1]:
+        return False
+    return palindrome(s[1:len(s)-1])
+</code></pre></li>
+<li>
+<p>Write a recursive function to calculate the <code>nth</code> number in the Finonacci sequence.</p>
+<pre tabindex="0"><code>def fib(n):
+    if n &lt;= 1:
+        return n
+    return fib(n-1)+fib(n-2)
+</code></pre><p>In the above solution it is important to analyse the recursion. Let&rsquo;s try to understand this by taking example if <code>fib(5)</code> i.e 5th element in the Fibonacci sequence. When we call <code>fib(5)</code> it recursively makes call to <code>fib(4)</code> then <code>fib(3)</code> then <code>fib(2)</code> then hits the base condition when it calls <code>fib(1)</code> as when <code>n&lt;=1</code> fib returns <code>n</code> i.e 1 in this case.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/2019-08-03-12-32-24.png"
+        data-srcset="/images/2019-08-03-12-32-24.png, /images/2019-08-03-12-32-24.png 1.5x, /images/2019-08-03-12-32-24.png 2x"
+        data-sizes="auto"
+        alt="/images/2019-08-03-12-32-24.png"
+        title="/images/2019-08-03-12-32-24.png" /></p>
+<p>Now the control goes back to <code>fib(2)</code> when it recursively makes call to <code>fib(0)</code> which is again a base condition and returns 0. So, <code>fib(2)</code> returns <code>1+0</code> back to <code>fib(3)</code> when <code>fib(3)</code> will further make recursive call to <code>fib(1)</code> which return 1. Hence <code>fib(3)</code> returns <code>1+1</code> back to <code>fib(4)</code>. Now <code>fib(4)</code> makes another recursive call to <code>fib(2)</code> which recursively calls <code>fib(1)</code> and <code>fib(0)</code> to essentially returns <code>1+0</code>, hence <code>fib(4)</code> returns <code>2+1</code> to <code>fib(5)</code>. Now <code>fib(5)</code> recursively makes call to <code>fib(3)</code> which upon makes further calls would essentially return <code>(1+0)+1</code> i.e 2. So, finally <code>fib(5)</code> returns <code>3+2</code> back to the caller, which is the 5th element in the Fibonacci sequence.<br>
+<img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/2019-08-03-12-33-49.png"
+        data-srcset="/images/2019-08-03-12-33-49.png, /images/2019-08-03-12-33-49.png 1.5x, /images/2019-08-03-12-33-49.png 2x"
+        data-sizes="auto"
+        alt="/images/2019-08-03-12-33-49.png"
+        title="/images/2019-08-03-12-33-49.png" /><br>
+(image courtesy- mycodeschool, which has arguably the best videos on DSA on the entire internet)</p>
+</li>
+<li>
+<p>Write a recursive function to find the sum of the digits of a number.</p>
+<pre tabindex="0"><code>def sum_of_digits(n,sum):
+    if n &lt;= 0:
+        return sum
+    sum += n %10
+    return sum_of_digits(n//10,sum) 
+</code></pre></li>
+</ul>
+</div></div></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/typeit/index.umd.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Souvik Haldar","id-2":"Souvik Haldar"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
