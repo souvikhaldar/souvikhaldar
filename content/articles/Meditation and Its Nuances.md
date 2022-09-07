@@ -1,7 +1,7 @@
 ---
 title: Meditation and Its Nuances
 date: 07-09-2022 2022-09-07T21:09:51+05:30
-draft: true
+draft: false
 ---
 # Meditation and Its Nuances
 Created: 07-09-2022 09:51
