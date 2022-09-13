@@ -1,7 +1,7 @@
 ---
 title: Master Theorem for asymptotic analysis of algorithms
 date: 2022-09-12
-draft: true
+draft: false
 ---
 Created: 2022-09-1213:34
 Master method is a set of formulae for calculaing the upper bound on the running time of a problem  which can be expressed in terms of recursive calls.
