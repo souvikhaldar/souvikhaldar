@@ -25,10 +25,10 @@ b = The factor by which the input size decreases in each recursive call. Eg. for
 d = exponent in the running time of the work done outside the recusive call, also called "combine step”  
 
 then,
-the upper bound in the running time i.e O(n) is: 
-$T(n) = O(n^d log_n)$  if $a=b^d$  
-$T(n) = O(n^d)$  if $a \lt b^d$   
-$T(n) = O(n^{\log_b{a}})$ if $a \gt b^d$
+the upper bound in the running time i.e O(n) is:   
+$T(n) = O(n^d log_n)$  if $a=b^d$    
+$T(n) = O(n^d)$  if $a \lt b^d$     
+$T(n) = O(n^{\log_b{a}})$ if $a \gt b^d$  
 
 
 
