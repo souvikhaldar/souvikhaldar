@@ -84,7 +84,12 @@ weight = 6
 [[menu.main]]
 name = "Tools"
 URL = "tools/"
-weight = 6
+weight = 7
+
+[[menu.main]]
+name = "Blockchain"
+URL = "blockchain/"
+weight = 8
 # OLD OVER------------------
 
 # Markup related configuration in Hugo
