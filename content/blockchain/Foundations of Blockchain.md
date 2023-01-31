@@ -32,7 +32,7 @@ The problem that arises out of this replication is the probability of inconsiste
 
 # Assumptions for the solution of SMR problem
 The solution for SMR problem needs a few assumptions to begin with, which can be relaxed aferwards. There are the assumptions:
-1. Permissioned- The number of nodes that going to run the protocol are known before the running starts. The names of the nodes are distinct, like IP addresses. Nodes need to have permission before running the protocol, unlike permissionless protocols like [Bitcoin](Bitcoin.md), [Ethereum](Ethereum), etc which any node can join.  
+1. Permissioned- The number of nodes that going to run the protocol are known before the running starts. The names of the nodes are distinct, like IP addresses. Nodes need to have permission before running the protocol, unlike permissionless protocols like [Bitcoin](Bitcoin.md), [Ethereum](Ethereum.md), etc which any node can join.  
 2. Public-key infrastructure - All the participating nodes have the public-private key pair and every node knows each other's public key.  
 3. Synchronous - All nodes share a global clock and messages sent to each other always arrives by next time iterval, where time is divided into intervals of some duration, say 10 seconds.
 4. All nodes are honest- All nodes are running the protocol in exactly the same way as expected. This is kinda ridiculous and will be relaxed really quick.  
@@ -43,6 +43,6 @@ A **Dis-honest** node is a node that does not follow the protocol. They are also
 3. Byzantine fault: A Byzantine faulty node is a node whose behavior can not be determined. It can do almost anything and we can make no assumptions.  
 
 Now the goal can shift from all honest nodes to having some byzantine nodes and the network still works. 
-
+The Dolov-Strong protocol satisfies the SMR problem of validity and agreement by confirming  that the sender is bzyntine (or not) by checking if all nodes agree on getting only one value of the received message's payload. If even one node agrees on getting more than one value then the received message is discarded. How is agreement achieved? the value is referenced by the message, the value is signed by the sender, t-1 nodes agree on the value at time t.
 ## References
 1. https://youtu.be/KNJGPI0fuFA
