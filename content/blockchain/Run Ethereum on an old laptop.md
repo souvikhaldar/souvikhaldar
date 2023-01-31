@@ -1,7 +1,7 @@
 ---
-title: Run Ethereum on an old laptop
+title: How To Run Ethereum On An Old Laptop
 date: 2023-01-06
-draft: true
+draft: false
 ---
 *A decentralized immutable append-only public ledger.*  
 By running a node that connects to the blockchain network, you become part of it and help decentralize it further, propagating the principle further, pat on back!  
@@ -130,5 +130,10 @@ InfluxDBOrganization = "geth"
 	   1. `mkdir prysm && cd prysm; curl https://raw.githubusercontent.com/prysmaticlabs/prysm/master/prysm.sh --output prysm.sh && chmod +x prysm.sh`  
 	   2. `./prysm.sh beacon-chain --execution-endpoint=/mnt/eth/ethereum/geth.ipc --checkpoint-sync-url=https://beaconstate.ethstaker.cc
 `
+This is how the final results looks to me <3 
+{{< tweet user="s0uvikhaldar" id="1613389779969937409" >}}
+
+**Happy Hacking!**
+
 ## References
 1. https://ethereum.org/en/developers/docs/nodes-and-clients/
