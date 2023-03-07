@@ -51,7 +51,7 @@ Here, Raspberry Pi 3 would be used the proxy server through which the network is
   ![Configure proxy on iPhone](/images/mobProxy.PNG)
 
 # Conclusion
-Now you are ready to explore internet with peace of mind that anonymity can provide. Please do cross check once that you were indeed able to configure tor well by visiting [this link](check.torproject.org) . You should ideally see something like this :)  
+Now you are ready to explore internet with peace of mind that anonymity can provide. Please do cross check once that you were indeed able to configure tor well by visiting [this link](https://check.torproject.org/) . You should ideally see something like this :)  
 
 ![Tor is configured successfully](/images/torConfirm.png)
 
