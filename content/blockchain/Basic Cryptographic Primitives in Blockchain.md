@@ -10,15 +10,18 @@ Hash functions are used to connect blocks in a tamper proof way and also in digi
 4. Hiding- Nearly impossible to guess the input value looking at the output hash.  
 In Public Key Encryption or Public Key Infrastructure (PKI), the encryption of messages is done with the public key and decryption is done using the private key.
 
-A cryptographic hash pointer is the location to which some information is stored and is also the hash of the information stored. If m is the information and h(m) is its hash, then h(m) is the cryptographic hash pointer to location where m is stored. 
+A cryptographic hash pointer is the location to which some information is stored and is also the hash of the information stored. If m is the information and h(m) is its hash, then h(m) is the cryptographic hash pointer to location where m is stored.   
+
 ![](/images/Pasted%20image%2020230424132821.png)
 
 This way we can link two blocks of data in a tamper proof way, because if data in previous block is changed then the hash will change and as a result the link will be broken. 
-We can make this tampering computationally difficult by concatenating a nonce to the data in the block and then putting certain restriction to the output hash, like the output hash should has x number of leading zeroes.
+We can make this tampering computationally difficult by concatenating a nonce to the data in the block and then putting certain restriction to the output hash, like the output hash should has x number of leading zeroes.  
+
 
 ![](/images/Pasted%20image%2020230424133117.png)
 
-A merkle tree works in a similar fashion where each parent node is hash of its child nodes. In the world of blockchain, each such nodes is a transaction and each block of the blockchain contains the root hash, nonce, previous hash and the hash of the entire current block. See the image below:-
+A merkle tree works in a similar fashion where each parent node is hash of its child nodes. In the world of blockchain, each such nodes is a transaction and each block of the blockchain contains the root hash, nonce, previous hash and the hash of the entire current block. See the image below:-  
+
 
 ![](/images/Pasted%20image%2020230424131453.png)
 
