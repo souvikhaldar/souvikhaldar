@@ -3,7 +3,7 @@ title: Basic Cryptographic Primitives in Blockchain
 date: 2023-01-31
 draft: false
 ---
-Hash functions are used to connect blocks in a tamper proof way and also in digitally signing documents. [Bitcoin](Bitcoin.md) uses SHA256 hashing algorithm for mining. The ideal properties of a hash function:
+Cryptography is the foundation of blockchain. It is widely used throughout the blockchain domain. Hash functions are used to connect blocks in a tamper proof way and also in digitally signing documents. [Bitcoin](Bitcoin.md) uses SHA256 hashing algorithm for mining. The ideal properties of a hash function:
 1. Collition free - The time taken to generate same hash is proportional to number of bits in the hash.  
 2. Puzzle friendly- It is difficult to find k such that Z = H(M || k), where Z and M are known and M is concatenated with k.
 3. Deterministic- Always yields the same value on same input.  
