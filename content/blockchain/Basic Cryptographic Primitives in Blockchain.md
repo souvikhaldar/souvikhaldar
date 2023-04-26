@@ -31,9 +31,9 @@ There are two types of cryptography:
 1. Symmetric key cryptography- Same key for encryption and decryption.
 2. Public key Cryptography - Different keys for encryption and decryption. 
 
-For secure communication using public key cryptography, we encrypt the message with the public of the receiver then send it to him. SInce the message can only be decrypted with the private key of the same receiver hence we can be assured that only the intended receiver can only read it. Eg, RSA algorithm.
+For secure communication using public key cryptography, we encrypt the message with the public key of the receiver then send it to him. Since the message can only be decrypted with the private key of the same receiver hence we can be assured that only the intended receiver can only read it. Eg, RSA algorithm.
 
-A Digital Signature is a digital code sent with the document which verify
+A Digital Signature is a digital code sent with the document which verify  
 i. The content is authenticated  
 ii. Identity of the sender  
 iii. Prevent non-repudiation- Sender can't deny having sent something.   
