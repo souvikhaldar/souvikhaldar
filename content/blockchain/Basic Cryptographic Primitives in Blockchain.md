@@ -26,6 +26,25 @@ A merkle tree works in a similar fashion where each parent node is hash of its c
 ![](/images/Pasted%20image%2020230424131453.png)
 
 Blockchain is a hashchain which is connected by hash pointers.  
+Cryptography is sending of messages in an encrypted way so that unwanted recipients can't read it.
+There are two types of cryptography:
+1. Symmetric key cryptography- Same key for encryption and decryption.
+2. Public key Cryptography - Different keys for encryption and decryption. 
+
+For secure communication using public key cryptography, we encrypt the message with the public of the receiver then send it to him. SInce the message can only be decrypted with the private key of the same receiver hence we can be assured that only the intended receiver can only read it. Eg, RSA algorithm.
+
+A Digital Signature is a digital code sent with the document which verify
+i. The content is authenticated  
+ii. Identity of the sender  
+iii. Prevent non-repudiation- Sender can't deny having sent something.   
+
+The sender hashes the message to be sent to generate a message digest. This message digest is encrypted using the sender's private key. This is the digital signature. Now this signature is sent along with the message.  
+The receiver can verify the digital signature by, generating the hash of the message received and comparing it with the decrypted version of the received signature using the public key of the sender. 
+This ensures the above mentioned three points.  
+
+![](/images/Pasted%20image%2020230426131624.png)
+
+In blockchain, digital signatures are used for verifying transactions. 
 
 ## References
 1. https://youtu.be/uTsAiyZ_cZ4 
