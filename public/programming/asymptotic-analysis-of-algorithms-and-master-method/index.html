@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Asymptotic analysis of algorithms and Master Method - Souvik Haldar</title><meta name="Description" content="Talks about programming, cyber security, networking, productivity and critics"><meta property="og:title" content="Asymptotic analysis of algorithms and Master Method" />
+<meta property="og:description" content="What is Asymptotic Analysis of algorithms? Asymtotic analysis is the way of expressing how fast or slow an algorithm is, especially for large inputs. It removes the dependency to compare algorithms on the basis of its underlying programming language, speed of CPU, etc, hence it makes comparison between different algorithms easier.
+Notations of Asymptotic Analysis Following are the notations for asymptotically analysing algorithms, where there are $n$ number of inputs and $T(n)$ signifies the time required for processing $n$ number of inputs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="souvikhaldar.in/programming/asymptotic-analysis-of-algorithms-and-master-method/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="programming" />
+<meta property="article:published_time" content="2022-09-20T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-09-20T00:00:00+00:00" /><meta property="og:site_name" content="Souvik Haldar" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Asymptotic analysis of algorithms and Master Method"/>
+<meta name="twitter:description" content="What is Asymptotic Analysis of algorithms? Asymtotic analysis is the way of expressing how fast or slow an algorithm is, especially for large inputs. It removes the dependency to compare algorithms on the basis of its underlying programming language, speed of CPU, etc, hence it makes comparison between different algorithms easier.
+Notations of Asymptotic Analysis Following are the notations for asymptotically analysing algorithms, where there are $n$ number of inputs and $T(n)$ signifies the time required for processing $n$ number of inputs."/>
+<meta name="application-name" content="A place for Souvik&#39;s thoughts">
+<meta name="apple-mobile-web-app-title" content="A place for Souvik&#39;s thoughts"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="souvikhaldar.in/programming/asymptotic-analysis-of-algorithms-and-master-method/" /><link rel="prev" href="souvikhaldar.in/programming/merge_conflict_fugitive/" /><link rel="next" href="souvikhaldar.in/programming/golang-garbage-collector-comes-with-a-new-feature/" /><link rel="stylesheet" href="/souvikhaldar.in/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Asymptotic analysis of algorithms and Master Method",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "souvikhaldar.in\/programming\/asymptotic-analysis-of-algorithms-and-master-method\/"
+        },"genre": "programming","wordcount":  385 ,
+        "url": "souvikhaldar.in\/programming\/asymptotic-analysis-of-algorithms-and-master-method\/","datePublished": "2022-09-20T00:00:00+00:00","dateModified": "2022-09-20T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Souvik Haldar"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="souvikhaldar.in/" title="Souvik Haldar"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/souvikhaldar.in/about"> About </a><a class="menu-item" href="/souvikhaldar.in/security/"> Security </a><a class="menu-item" href="/souvikhaldar.in/articles/"> Articles </a><a class="menu-item" href="/souvikhaldar.in/events/"> Events </a><a class="menu-item" href="/souvikhaldar.in/networking/"> Networking </a><a class="menu-item" href="/souvikhaldar.in/programming/"> Programming </a><a class="menu-item" href="/souvikhaldar.in/tools/"> Tools </a><a class="menu-item" href="/souvikhaldar.in/blockchain/"> Blockchain </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="souvikhaldar.in/" title="Souvik Haldar"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/souvikhaldar.in/about" title="">About</a><a class="menu-item" href="/souvikhaldar.in/security/" title="">Security</a><a class="menu-item" href="/souvikhaldar.in/articles/" title="">Articles</a><a class="menu-item" href="/souvikhaldar.in/events/" title="">Events</a><a class="menu-item" href="/souvikhaldar.in/networking/" title="">Networking</a><a class="menu-item" href="/souvikhaldar.in/programming/" title="">Programming</a><a class="menu-item" href="/souvikhaldar.in/tools/" title="">Tools</a><a class="menu-item" href="/souvikhaldar.in/blockchain/" title="">Blockchain</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Asymptotic analysis of algorithms and Master Method</h1><div class="content" id="content"><h2 id="what-is-asymptotic-analysis-of-algorithms">What is Asymptotic Analysis of algorithms?</h2>
+<p>Asymtotic analysis is the way of expressing how fast or slow an algorithm is, especially for large inputs. It removes the dependency to compare algorithms on the basis of its underlying programming language, speed of CPU, etc, hence it makes comparison between different algorithms easier.</p>
+<h2 id="notations-of-asymptotic-analysis">Notations of Asymptotic Analysis</h2>
+<p>Following are the notations for asymptotically analysing algorithms, where there are $n$ number of inputs and $T(n)$ signifies the time required for processing $n$ number of inputs.</p>
+<ol>
+<li>O(n) or Big-Oh notation: It signifies the running time of an algorithm in the worst case. It can also be thought as the upper bound on the time taken, that at max it will take this amount of time.
+$T(n)\space is\space O(f(n))$ if and only if there exists $c$ and $n_0$ such that
+$$ T(n) \leq c \times f(n) \space \space \forall  n&gt;n_0, n_0 \geq 0$$
+<img
+        class="lazyload"
+        src="/souvikhaldar.in/svg/loading.min.svg"
+        data-src="/images/bigOh.png"
+        data-srcset="/images/bigOh.png, /images/bigOh.png 1.5x, /images/bigOh.png 2x"
+        data-sizes="auto"
+        alt="/images/bigOh.png"
+        title="/images/bigOh.png" /></li>
+<li>$\Omega(n)$ or Omega notation: It signifies the running time of an algorithm is the best case.
+$T(n)=\Omega(f(n))$ if and only if there exists $c$ and $n_0$ such that $$T(n) \geq c \times f(n) \space \space \forall n \geq n_0, n_0 \geq 0$$</li>
+<li>$\theta(n)$ or Theta notation: It signifies the average running time of an algoritm and if often used interchangably with $O(n)$
+$$T(n) = \theta(n) \space if\space and\space only\space if\space T(n) = O(n)\space and\space T(n) = \Omega(n)$$</li>
+</ol>
+<h2 id="calculating-asymptotic-running-time-of-algorithms">Calculating Asymptotic running time of algorithms</h2>
+<p>If the algorithm can be implemented in the recursive fashion and each of the sub-problem is of equal size, we can use <strong>Master Method</strong> for calculating the running time of the algorithm in a very simple way.
+The running time of the algorithm is expressed as: $$T(n)\space \leq \space aT(n/b)+ O(n^d)$$
+where,<br>
+a = Number of recursive calls<br>
+b = The factor by which the input size decreases in each recursive call. Eg. for merge sort it would be 2 since we divide the input array into two halves in every step<br>
+d = exponent in the running time of the work done outside the recusive call, also called &ldquo;combine step”</p>
+<p>then,
+the upper bound in the running time i.e O(n) is:<br>
+$T(n) = O(n^d log_n)$  if $a=b^d$ <br>
+$T(n) = O(n^d)$  if $a \lt b^d$  <br>
+$T(n) = O(n^{\log_b{a}})$ if $a \gt b^d$</p>
+<h2 id="references">References</h2>
+<ol>
+<li>Divide and Conquer, Sorting and Searching, and Randomized Algorithms, Stanford University</li>
+</ol>
+</div></div></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Souvik Haldar","id-2":"Souvik Haldar"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/souvikhaldar.in/js/theme.min.js"></script></body>
+</html>

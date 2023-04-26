@@ -2,17 +2,28 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Networkings on Souvik Haldar</title>
-    <link>http://souvikhaldar.in/networking/</link>
+    <link>souvikhaldar.in/networking/</link>
     <description>Recent content in Networkings on Souvik Haldar</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 17 Aug 2019 21:33:47 +0530</lastBuildDate><atom:link href="http://souvikhaldar.in/networking/index.xml" rel="self" type="application/rss+xml" />
+    <managingEditor>souvikhaldar32@gmail.com (Souvik Haldar)</managingEditor>
+    <webMaster>souvikhaldar32@gmail.com (Souvik Haldar)</webMaster>
+    <lastBuildDate>Fri, 16 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="souvikhaldar.in/networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Distributed Hole Punching</title>
+      <link>souvikhaldar.in/networking/distributed-hole-punching/</link>
+      <pubDate>Fri, 16 Dec 2022 00:00:00 +0000</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>souvikhaldar.in/networking/distributed-hole-punching/</guid>
+      <description>The web of interconnected devices is called the internet. But this interconnection currently heavily depends on servers and hence internet has become heavily monopolised as few tech giants hold the most computation power to serve. This centralisation is popularly termed web2. The utopia of the next generation of the internet is web3 where computers can actually talk to each other to serve all purposes that web2 currently does. But how do computers talk to each other directly given the fact that most of the computers are behind firewall or NAT (Network Address Translator)?</description>
+    </item>
+    
     <item>
       <title>Basic Concepts of Computer Networking</title>
-      <link>http://souvikhaldar.in/networking/basic_concepts/</link>
+      <link>souvikhaldar.in/networking/basic_concepts/</link>
       <pubDate>Sat, 17 Aug 2019 21:33:47 +0530</pubDate>
-      
-      <guid>http://souvikhaldar.in/networking/basic_concepts/</guid>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>souvikhaldar.in/networking/basic_concepts/</guid>
       <description>What is a Computer Network A communication system for connecting internet-enabled devices like computers,smartphones,etc.
 Types of Computer Networks Local Area Network (LAN): Connects hosts within a relatively small geographical area,like same room, same building, same campus,etc. Faster. Cheaper. Wide Area Network (WAN): Connects hosts in relatively bigger geographical area, like a city, a country, a continent, etc. Slower Expensive The initial cost of setting up a LAN might be high, but the end result is a self managed network infrastructure.</description>
     </item>

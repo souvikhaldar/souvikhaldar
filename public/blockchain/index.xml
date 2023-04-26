@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blockchains on Souvik Haldar</title>
+    <link>souvikhaldar.in/blockchain/</link>
+    <description>Recent content in Blockchains on Souvik Haldar</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>souvikhaldar32@gmail.com (Souvik Haldar)</managingEditor>
+    <webMaster>souvikhaldar32@gmail.com (Souvik Haldar)</webMaster>
+    <lastBuildDate>Tue, 31 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="souvikhaldar.in/blockchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basic Cryptographic Primitives in Blockchain</title>
+      <link>souvikhaldar.in/blockchain/basic-cryptographic-primitives-in-blockchain/</link>
+      <pubDate>Tue, 31 Jan 2023 00:00:00 +0000</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>souvikhaldar.in/blockchain/basic-cryptographic-primitives-in-blockchain/</guid>
+      <description>Hash functions are used to connect blocks in a tamper proof way and also in digitally signing documents. Bitcoin uses SHA256 hashing algorithm for mining. The ideal properties of a hash function:
+Collition free - The time taken to generate same hash is proportional to number of bits in the hash. Puzzle friendly- It is difficult to find k such that Z = H(M || k), where Z and M are known and M is concatenated with k.</description>
+    </item>
+    
+    <item>
+      <title>How To Run Ethereum On An Old Laptop</title>
+      <link>souvikhaldar.in/blockchain/run-ethereum-on-an-old-laptop/</link>
+      <pubDate>Fri, 06 Jan 2023 00:00:00 +0000</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>souvikhaldar.in/blockchain/run-ethereum-on-an-old-laptop/</guid>
+      <description>A decentralized immutable append-only public ledger.
+By running a node that connects to the blockchain network, you become part of it and help decentralize it further, propagating the principle further, pat on back!
+My other usecase is, I want to connect to the network directly so that I can deploy my smart contracts directly and not use other node as service services for deployment like Infura.io
+So here is how I approached in joining the ethereum main network (aka mainnet) using my old personal laptop.</description>
+    </item>
+    
+    <item>
+      <title>Foundations of Blockchain</title>
+      <link>souvikhaldar.in/blockchain/foundations-of-blockchain/</link>
+      <pubDate>Thu, 17 Nov 2022 00:00:00 +0000</pubDate>
+      <author>souvikhaldar32@gmail.com (Souvik Haldar)</author>
+      <guid>souvikhaldar.in/blockchain/foundations-of-blockchain/</guid>
+      <description>Introduction Blockchain unlocks a whole new world of use-cases of Internet that we know but powers we still don&amp;rsquo;t. It is like a distributed computing environment that is not owned by no central authority, a true democracy in the digital world. To understand the blockchain stack, it would be convinient to break it down into multiple layers but there is no strict distinction between them and this layering is just for purpose of reference.</description>
+    </item>
+    
+  </channel>
+</rss>

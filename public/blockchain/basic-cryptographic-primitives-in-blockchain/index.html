@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Basic Cryptographic Primitives in Blockchain - Souvik Haldar</title><meta name="Description" content="Talks about programming, cyber security, networking, productivity and critics"><meta property="og:title" content="Basic Cryptographic Primitives in Blockchain" />
+<meta property="og:description" content="Hash functions are used to connect blocks in a tamper proof way and also in digitally signing documents. Bitcoin uses SHA256 hashing algorithm for mining. The ideal properties of a hash function:
+Collition free - The time taken to generate same hash is proportional to number of bits in the hash. Puzzle friendly- It is difficult to find k such that Z = H(M || k), where Z and M are known and M is concatenated with k." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="souvikhaldar.in/blockchain/basic-cryptographic-primitives-in-blockchain/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="blockchain" />
+<meta property="article:published_time" content="2023-01-31T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-01-31T00:00:00+00:00" /><meta property="og:site_name" content="Souvik Haldar" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Basic Cryptographic Primitives in Blockchain"/>
+<meta name="twitter:description" content="Hash functions are used to connect blocks in a tamper proof way and also in digitally signing documents. Bitcoin uses SHA256 hashing algorithm for mining. The ideal properties of a hash function:
+Collition free - The time taken to generate same hash is proportional to number of bits in the hash. Puzzle friendly- It is difficult to find k such that Z = H(M || k), where Z and M are known and M is concatenated with k."/>
+<meta name="application-name" content="A place for Souvik&#39;s thoughts">
+<meta name="apple-mobile-web-app-title" content="A place for Souvik&#39;s thoughts"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="souvikhaldar.in/blockchain/basic-cryptographic-primitives-in-blockchain/" /><link rel="prev" href="souvikhaldar.in/blockchain/run-ethereum-on-an-old-laptop/" /><link rel="stylesheet" href="/souvikhaldar.in/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Basic Cryptographic Primitives in Blockchain",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "souvikhaldar.in\/blockchain\/basic-cryptographic-primitives-in-blockchain\/"
+        },"genre": "blockchain","wordcount":  526 ,
+        "url": "souvikhaldar.in\/blockchain\/basic-cryptographic-primitives-in-blockchain\/","datePublished": "2023-01-31T00:00:00+00:00","dateModified": "2023-01-31T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Souvik Haldar"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="souvikhaldar.in/" title="Souvik Haldar"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/souvikhaldar.in/about"> About </a><a class="menu-item" href="/souvikhaldar.in/security/"> Security </a><a class="menu-item" href="/souvikhaldar.in/articles/"> Articles </a><a class="menu-item" href="/souvikhaldar.in/events/"> Events </a><a class="menu-item" href="/souvikhaldar.in/networking/"> Networking </a><a class="menu-item" href="/souvikhaldar.in/programming/"> Programming </a><a class="menu-item" href="/souvikhaldar.in/tools/"> Tools </a><a class="menu-item" href="/souvikhaldar.in/blockchain/"> Blockchain </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="souvikhaldar.in/" title="Souvik Haldar"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/souvikhaldar.in/about" title="">About</a><a class="menu-item" href="/souvikhaldar.in/security/" title="">Security</a><a class="menu-item" href="/souvikhaldar.in/articles/" title="">Articles</a><a class="menu-item" href="/souvikhaldar.in/events/" title="">Events</a><a class="menu-item" href="/souvikhaldar.in/networking/" title="">Networking</a><a class="menu-item" href="/souvikhaldar.in/programming/" title="">Programming</a><a class="menu-item" href="/souvikhaldar.in/tools/" title="">Tools</a><a class="menu-item" href="/souvikhaldar.in/blockchain/" title="">Blockchain</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Basic Cryptographic Primitives in Blockchain</h1><div class="content" id="content"><p>Hash functions are used to connect blocks in a tamper proof way and also in digitally signing documents. <a href="Bitcoin.md" rel="">Bitcoin</a> uses SHA256 hashing algorithm for mining. The ideal properties of a hash function:</p>
+<ol>
+<li>Collition free - The time taken to generate same hash is proportional to number of bits in the hash.</li>
+<li>Puzzle friendly- It is difficult to find k such that Z = H(M || k), where Z and M are known and M is concatenated with k.</li>
+<li>Deterministic- Always yields the same value on same input.</li>
+<li>Hiding- Nearly impossible to guess the input value looking at the output hash.<br>
+In Public Key Encryption or Public Key Infrastructure (PKI), the encryption of messages is done with the public key and decryption is done using the private key.</li>
+</ol>
+<p>A cryptographic hash pointer is the location to which some information is stored and is also the hash of the information stored. If m is the information and h(m) is its hash, then h(m) is the cryptographic hash pointer to location where m is stored.</p>
+<p><img
+        class="lazyload"
+        src="/souvikhaldar.in/svg/loading.min.svg"
+        data-src="/images/Pasted%20image%2020230424132821.png"
+        data-srcset="/images/Pasted%20image%2020230424132821.png, /images/Pasted%20image%2020230424132821.png 1.5x, /images/Pasted%20image%2020230424132821.png 2x"
+        data-sizes="auto"
+        alt="/images/Pasted%20image%2020230424132821.png"
+        title="/images/Pasted%20image%2020230424132821.png" /></p>
+<p>This way we can link two blocks of data in a tamper proof way, because if data in previous block is changed then the hash will change and as a result the link will be broken.
+We can make this tampering computationally difficult by concatenating a nonce to the data in the block and then putting certain restriction to the output hash, like the output hash should has x number of leading zeroes.</p>
+<p><img
+        class="lazyload"
+        src="/souvikhaldar.in/svg/loading.min.svg"
+        data-src="/images/Pasted%20image%2020230424133117.png"
+        data-srcset="/images/Pasted%20image%2020230424133117.png, /images/Pasted%20image%2020230424133117.png 1.5x, /images/Pasted%20image%2020230424133117.png 2x"
+        data-sizes="auto"
+        alt="/images/Pasted%20image%2020230424133117.png"
+        title="/images/Pasted%20image%2020230424133117.png" /></p>
+<p>A merkle tree works in a similar fashion where each parent node is hash of its child nodes. In the world of blockchain, each such nodes is a transaction and each block of the blockchain contains the root hash, nonce, previous hash and the hash of the entire current block. See the image below:-</p>
+<p><img
+        class="lazyload"
+        src="/souvikhaldar.in/svg/loading.min.svg"
+        data-src="/images/Pasted%20image%2020230424131453.png"
+        data-srcset="/images/Pasted%20image%2020230424131453.png, /images/Pasted%20image%2020230424131453.png 1.5x, /images/Pasted%20image%2020230424131453.png 2x"
+        data-sizes="auto"
+        alt="/images/Pasted%20image%2020230424131453.png"
+        title="/images/Pasted%20image%2020230424131453.png" /></p>
+<p>Blockchain is a hashchain which is connected by hash pointers.<br>
+Cryptography is sending of messages in an encrypted way so that unwanted recipients can&rsquo;t read it.
+There are two types of cryptography:</p>
+<ol>
+<li>Symmetric key cryptography- Same key for encryption and decryption.</li>
+<li>Public key Cryptography - Different keys for encryption and decryption.</li>
+</ol>
+<p>For secure communication using public key cryptography, we encrypt the message with the public of the receiver then send it to him. SInce the message can only be decrypted with the private key of the same receiver hence we can be assured that only the intended receiver can only read it. Eg, RSA algorithm.</p>
+<p>A Digital Signature is a digital code sent with the document which verify
+i. The content is authenticated<br>
+ii. Identity of the sender<br>
+iii. Prevent non-repudiation- Sender can&rsquo;t deny having sent something.</p>
+<p>The sender hashes the message to be sent to generate a message digest. This message digest is encrypted using the sender&rsquo;s private key. This is the digital signature. Now this signature is sent along with the message.<br>
+The receiver can verify the digital signature by, generating the hash of the message received and comparing it with the decrypted version of the received signature using the public key of the sender.
+This ensures the above mentioned three points.</p>
+<p><img
+        class="lazyload"
+        src="/souvikhaldar.in/svg/loading.min.svg"
+        data-src="/images/Pasted%20image%2020230426131624.png"
+        data-srcset="/images/Pasted%20image%2020230426131624.png, /images/Pasted%20image%2020230426131624.png 1.5x, /images/Pasted%20image%2020230426131624.png 2x"
+        data-sizes="auto"
+        alt="/images/Pasted%20image%2020230426131624.png"
+        title="/images/Pasted%20image%2020230426131624.png" /></p>
+<p>In blockchain, digital signatures are used for verifying transactions.</p>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://youtu.be/uTsAiyZ_cZ4" target="_blank" rel="noopener noreffer ">https://youtu.be/uTsAiyZ_cZ4</a></li>
+<li>Slides- <a href="https://drive.google.com/file/d/1uNevL5jVBU538JbzjpMIgI-ErhBiJHrk/view" target="_blank" rel="noopener noreffer ">https://drive.google.com/file/d/1uNevL5jVBU538JbzjpMIgI-ErhBiJHrk/view</a></li>
+</ol>
+</div></div></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Souvik Haldar","id-2":"Souvik Haldar"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/souvikhaldar.in/js/theme.min.js"></script></body>
+</html>

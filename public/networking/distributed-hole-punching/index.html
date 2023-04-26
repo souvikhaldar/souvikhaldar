@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <title>Distributed Hole Punching - Souvik Haldar</title><meta name="Description" content="Talks about programming, cyber security, networking, productivity and critics"><meta property="og:title" content="Distributed Hole Punching" />
+<meta property="og:description" content="The web of interconnected devices is called the internet. But this interconnection currently heavily depends on servers and hence internet has become heavily monopolised as few tech giants hold the most computation power to serve. This centralisation is popularly termed web2. The utopia of the next generation of the internet is web3 where computers can actually talk to each other to serve all purposes that web2 currently does. But how do computers talk to each other directly given the fact that most of the computers are behind firewall or NAT (Network Address Translator)?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="souvikhaldar.in/networking/distributed-hole-punching/" /><meta property="og:image" content="/logo.png"/><meta property="article:section" content="networking" />
+<meta property="article:published_time" content="2022-12-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-16T00:00:00+00:00" /><meta property="og:site_name" content="Souvik Haldar" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="/logo.png"/>
+
+<meta name="twitter:title" content="Distributed Hole Punching"/>
+<meta name="twitter:description" content="The web of interconnected devices is called the internet. But this interconnection currently heavily depends on servers and hence internet has become heavily monopolised as few tech giants hold the most computation power to serve. This centralisation is popularly termed web2. The utopia of the next generation of the internet is web3 where computers can actually talk to each other to serve all purposes that web2 currently does. But how do computers talk to each other directly given the fact that most of the computers are behind firewall or NAT (Network Address Translator)?"/>
+<meta name="application-name" content="A place for Souvik&#39;s thoughts">
+<meta name="apple-mobile-web-app-title" content="A place for Souvik&#39;s thoughts"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="souvikhaldar.in/networking/distributed-hole-punching/" /><link rel="prev" href="souvikhaldar.in/networking/basic_concepts/" /><link rel="stylesheet" href="/souvikhaldar.in/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"></noscript><link rel="preload" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css"></noscript><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Distributed Hole Punching",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "souvikhaldar.in\/networking\/distributed-hole-punching\/"
+        },"genre": "networking","wordcount":  312 ,
+        "url": "souvikhaldar.in\/networking\/distributed-hole-punching\/","datePublished": "2022-12-16T00:00:00+00:00","dateModified": "2022-12-16T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Souvik Haldar"
+            },"description": ""
+    }
+    </script></head>
+    <body data-header-desktop="auto" data-header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="souvikhaldar.in/" title="Souvik Haldar"><span id="id-1" class="typeit"></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/souvikhaldar.in/about"> About </a><a class="menu-item" href="/souvikhaldar.in/security/"> Security </a><a class="menu-item" href="/souvikhaldar.in/articles/"> Articles </a><a class="menu-item" href="/souvikhaldar.in/events/"> Events </a><a class="menu-item" href="/souvikhaldar.in/networking/"> Networking </a><a class="menu-item" href="/souvikhaldar.in/programming/"> Programming </a><a class="menu-item" href="/souvikhaldar.in/tools/"> Tools </a><a class="menu-item" href="/souvikhaldar.in/blockchain/"> Blockchain </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+                </a></div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="souvikhaldar.in/" title="Souvik Haldar"><span id="id-2" class="typeit"></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw" aria-hidden="true"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/souvikhaldar.in/about" title="">About</a><a class="menu-item" href="/souvikhaldar.in/security/" title="">Security</a><a class="menu-item" href="/souvikhaldar.in/articles/" title="">Articles</a><a class="menu-item" href="/souvikhaldar.in/events/" title="">Events</a><a class="menu-item" href="/souvikhaldar.in/networking/" title="">Networking</a><a class="menu-item" href="/souvikhaldar.in/programming/" title="">Programming</a><a class="menu-item" href="/souvikhaldar.in/tools/" title="">Tools</a><a class="menu-item" href="/souvikhaldar.in/blockchain/" title="">Blockchain</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw" aria-hidden="true"></i>
+            </a></div>
+    </div>
+</header><div class="search-dropdown desktop">
+        <div id="search-dropdown-desktop"></div>
+    </div>
+    <div class="search-dropdown mobile">
+        <div id="search-dropdown-mobile"></div>
+    </div><main class="main">
+                <div class="container"><div class="page single special"><h1 class="single-title animate__animated animate__pulse animate__faster">Distributed Hole Punching</h1><div class="content" id="content"><p>The web of interconnected devices is called the internet. But this interconnection currently heavily depends on servers and hence internet has become heavily monopolised as few tech giants hold the most computation power to serve. This centralisation is popularly termed web2. The utopia of the next generation of the internet is web3 where computers can actually talk to each other to serve all purposes that web2 currently does.
+But how do computers talk to each other directly given the fact that most of the computers are behind firewall or NAT (Network Address Translator)? Here comes the concept of <strong>Hole Punching</strong>, which helps in achieving that, hence it can be thought of as <em>the basis of web3</em>.<br>
+Here, I&rsquo;ll try to explain Hole Punching as very simple way in following steps:</p>
+<ol>
+<li>Figure out if the computer can be connected directly: If a computer can be connected to directly then hole punching is not required. To figure this out two components of libp2p is required called <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/protocol/identify" target="_blank" rel="noopener noreffer ">identify</a> and <a href="https://github.com/libp2p/go-libp2p/tree/master/p2p/host/autonat" target="_blank" rel="noopener noreffer ">autoNAT</a>. The node figures a range of its possible public addess using identify then asks neighbours to dial it. If one of the address succeeds, autoNAT declares that hole punching is not required. If hole punching is required we proceed with the following steps.</li>
+<li>Advertising public address via relay nodes: Using Kademlia Distributed Hash Table, the private node finds the closest relay nodes (in <a href="IPFS" rel="">IPFS</a> any public node can serve as relay). The node would advestise its address as <code>/&lt;relay-addr&gt;/p2p-circuit/&lt;peer-id&gt;</code> , which other nodes can use to connect to it via this relay node.</li>
+<li>Establishing direct connection: Once both nodes are connected via relay as mentioned in step 2, both send each other a <code>connect</code> message that contains each others address. Then both send each other <code>sync</code> message directly using the address obtained in others <code>connect</code> message. This concludes the process of <strong>hole punching</strong>.</li>
+</ol>
+<h2 id="references">References</h2>
+<ol>
+<li><a href="https://docs.libp2p.io/concepts/nat/hole-punching/" target="_blank" rel="noopener noreffer ">https://docs.libp2p.io/concepts/nat/hole-punching/</a></li>
+</ol>
+</div></div></div>
+            </main></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw" aria-hidden="true"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw" aria-hidden="true"></i>
+            </a>
+        </div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/autocomplete.js@0.38.1/dist/autocomplete.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lunr@2.3.9/lunr.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazysizes@5.3.2/lazysizes.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/sharer.js@0.5.1/sharer.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/typeit@8.6.0/dist/index.umd.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/copy-tex.min.js"></script><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":50},"comment":{},"data":{"id-1":"Souvik Haldar","id-2":"Souvik Haldar"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":true,"left":"\\begin{equation}","right":"\\end{equation}"},{"display":true,"left":"\\begin{equation*}","right":"\\end{equation*}"},{"display":true,"left":"\\begin{align}","right":"\\end{align}"},{"display":true,"left":"\\begin{align*}","right":"\\end{align*}"},{"display":true,"left":"\\begin{alignat}","right":"\\end{alignat}"},{"display":true,"left":"\\begin{alignat*}","right":"\\end{alignat*}"},{"display":true,"left":"\\begin{gather}","right":"\\end{gather}"},{"display":true,"left":"\\begin{CD}","right":"\\end{CD}"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30},"typeit":{"cursorChar":"|","cursorSpeed":1000,"data":{"id-1":["id-1"],"id-2":["id-2"]},"duration":-1,"speed":100}};</script><script type="text/javascript" src="/souvikhaldar.in/js/theme.min.js"></script></body>
+</html>
