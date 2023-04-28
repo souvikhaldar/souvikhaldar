@@ -1,5 +1,5 @@
 ---
-title: Elements of Blockchain
+title: Elements of Bitcoin
 date: 2023-04-28
 draft: false
 ---
