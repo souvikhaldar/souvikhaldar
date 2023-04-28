@@ -48,4 +48,4 @@ In blockchain, digital signatures are used for verifying transactions.
 
 ## References
 1. https://youtu.be/uTsAiyZ_cZ4 
-2. Slides- https://drive.google.com/file/d/1uNevL5jVBU538JbzjpMIgI-ErhBiJHrk/view
+2. Slides- https://drive.google.com/file/d/1uNevL5jVBU538JbzjpMIgI-ErhBiJHrk/view (week1) and https://drive.google.com/file/d/1Ipcy47ySyuWViadeFCwWPpbDSHvU-2Y6/view (week2)
