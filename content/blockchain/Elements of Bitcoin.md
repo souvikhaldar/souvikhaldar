@@ -3,8 +3,8 @@ title: Elements of Bitcoin
 date: 2023-04-28
 draft: false
 ---
-Bitcoin is the cryptocurrency that set out a revolution in the world of finance as well as technology. It was created by someone named Satoshi Nakamoto, who is still a mystery. Let's discuss some important concepts of Bitcoin. The average size of each block in [Bitcoin](Bitcoin.md) is 1 MB.
-The process of mining is generating a new block to be added to the blockchain so that, the hash of 
+Bitcoin is the cryptocurrency that set out a revolution in the world of finance as well as technology. It was created by someone named Satoshi Nakamoto, who is still a mystery. Let's discuss some important concepts of Bitcoin. The average size of each block in [Bitcoin](Bitcoin.md) is 8 MB at present.   
+The process of mining is generating a new block to be added to the blockchain so that, the hash of:   
 1. Timestamp
 2. Previous block Hash
 3. Merkle root
