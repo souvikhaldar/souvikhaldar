@@ -222,7 +222,7 @@ weight = 8
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = "Souvik Haldar"
       # subtitle shown in home page (HTML format is supported)
-      subtitle = "As the founder of Hornet Technology, I’m an engineer at heart who values initiative and continuous growth. Fascinated by PCBs since childhood, I explore Distributed Systems, Cyber Security, and Embedded Systems, leveraging Golang to innovate and build."
+      subtitle = "As the founder of https://www.hornet.technology , I’m an engineer at heart who values initiative and continuous growth. Fascinated by PCBs since childhood, I explore Distributed Systems, Cyber Security, and Embedded Systems, leveraging Golang to innovate and build."
       # whether to use typeit animation for subtitle
       typeit = false
       # whether to show social links
