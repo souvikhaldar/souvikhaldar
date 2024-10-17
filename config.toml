@@ -222,7 +222,7 @@ weight = 8
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = "Souvik Haldar"
       # subtitle shown in home page (HTML format is supported)
-      subtitle = "Souvik Haldar is the Founder and CEO of Hornet, a blockchain and darkweb investigation and intelligence platform. He graduated in Computer Science and Engineering from Techno Main Salt Lake, then did Executive Diploma in Cyber Security from IIT Kanpur, pursing MBA in Finance and worked at various startups as Software Engineer, previous one being Israeli Security company called Imperva. He has won various accolades for startup, few of them being- Winner of STPI Chunauti 5.0 and secured seed fund, Best Innovation Award from Lt. Governer of Delhi Shri Vinai Saxena, Best Startup award at ABP-INFOCOM and represented Department of IT of West Bengal at India Mobile Congress, 2023 which was inaugurated by Prime Minister Shri Narendra Modi."
+      subtitle = "As the founder of Hornet Technology, I’m an engineer at heart who values initiative and continuous growth. Fascinated by PCBs since childhood, I explore Distributed Systems, Cyber Security, and Embedded Systems, leveraging Golang to innovate and build."
       # whether to use typeit animation for subtitle
       typeit = false
       # whether to show social links
