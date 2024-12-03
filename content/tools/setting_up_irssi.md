@@ -7,7 +7,6 @@ draft: false
 ## What is IRC?
 IRC is the abbreviation for *Internet Relay Chat*, which is an application layer protocol of the OSI stack, used for communication between systems connected to the internet. It follows the [client-server architecture model](https://en.wikipedia.org/wiki/Client%E2%80%93server_model).  
 
-{{< tweet 1137991622178816001 >}}  
 An easy way to remember this stack is:  
 ```
 Please

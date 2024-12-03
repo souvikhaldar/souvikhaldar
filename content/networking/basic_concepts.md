@@ -57,7 +57,6 @@ On the downside, `Vitual Circuit` approach does not guarantee delivery of every 
 # Layered Network Architecture  
 The Open Systems Interconnection (OSI) model is a seven layer model which is used to describe the hierarchical layers of the network. The objective of this model is clearly design the network and make each layer of this model independent of other layers i.e changes to one layer does not affect the other.   
 
-{{< tweet 1137991622178816001 >}}  
 An easy way to remember this stack is:  
 ```
 Please
