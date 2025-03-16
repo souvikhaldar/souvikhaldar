@@ -132,7 +132,7 @@ These are the following steps I'm undertaking:
 
 6. Run the consensus client:  
 	   1. `mkdir prysm && cd prysm; curl https://raw.githubusercontent.com/prysmaticlabs/prysm/master/prysm.sh --output prysm.sh && chmod +x prysm.sh`   
-	   2. `./prysm.sh beacon-chain --execution-endpoint=/mnt/eth/ethereum/geth.ipc --checkpoint-sync-url=https://beaconstate.ethstaker.cc`  
+           2. `./prysm.sh beacon-chain --execution-endpoint=/mnt/ssd/ethereum/geth.ipc --checkpoint-sync-url=https://beaconstate.ethstaker.cc --datadir=/mnt/ssd/ethereum/consensus/prysm`  
 
 
 
