@@ -1,7 +1,5 @@
-- 👋 Hi, I’m @souvikhaldar
-- 👀 I’m interested in Golang, linux kernal and cyber security.
-- 🌱 I’m currently learning data structures and algorithms and implementing them in Golang.
-- 💞️ I’m looking to collaborate on security and networking softwares.
+- 👋 Hi, I’m @souvikhaldar - Founder & CEO www.hornet.technology
+- 👀 I’m interested in Golang, Cryptocurrency, Blockchain linux kernal and cyber security.
 - 📫 To reach me visit: http://www.souvikhaldar.in
 
 <!---
