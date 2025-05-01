@@ -109,7 +109,6 @@ weight = 8
 [params]
   # site default theme ["auto", "light", "dark"]
   defaultTheme = "auto"
-  author = "Souvik Haldar"
   # public git repo url only then enableGitInfo is true
   #gitRepo = ""
   # LoveIt NEW | 0.1.1 which hash function used for SRI, when empty, no SRI is used
@@ -125,6 +124,8 @@ weight = 8
   images = ["/logo.png"]
 
   # Header config
+  [params.author]
+  	name = "Souvik Haldar"
   [params.header]
     # desktop header mode ["fixed", "normal", "auto"]
     desktopMode = "auto"
