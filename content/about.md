@@ -5,7 +5,7 @@ draft: false
 ---
 
 ## Contact  
-* Email- souvikhaldar32@gmail.com 
+* Email- mail@souvikhaldar.in 
 * IRC- souvikhaldar on Freenode server  
 
 ## Profile

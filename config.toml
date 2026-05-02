@@ -15,7 +15,7 @@ languageName = "English"
 # Author config
 [author]
   name = "Souvik Haldar"
-  email = "souvikhaldar32@gmail.com"
+  email = "mail@souvikhaldar.in"
   link = ""
 
 # Menu config
@@ -127,7 +127,7 @@ weight = 8
   # Header config
   [params.author]
   	name = "Souvik Haldar"
-    email = "souvikhaldar32@gmail.com"
+    email = "mail@souvikhaldar.in"
   [params.header]
     # desktop header mode ["fixed", "normal", "auto"]
     desktopMode = "auto"
@@ -552,6 +552,5 @@ weight = 8
   # LoveIt NEW | 0.2.0 Analytics config
   [params.analytics]
     enable = false
-
 
 
