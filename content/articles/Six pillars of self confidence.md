@@ -1,6 +1,5 @@
 ---
 title: Six pillars of self confidence
-date: 12-07-2022
 date: 2022-07-12T11:50:36+05:30
 draft: false
 ---

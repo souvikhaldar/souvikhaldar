@@ -1,0 +1,54 @@
+{{ define "main" }}
+{{ $posts := where site.RegularPages "Draft" false }}
+{{ $featured := first 6 (sort $posts "Date" "desc") }}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Founder · Engineer · Cybersecurity Builder</p>
+    <h1>Building investigation infrastructure for the hidden layers of the internet.</h1>
+    <p class="lead">I’m Souvik Haldar, founder of Hornet. I work across blockchain forensics, dark web intelligence, distributed systems, embedded systems, and Go based infrastructure.</p>
+    <div class="hero-actions">
+      <a class="button primary" href="/about/">About me</a>
+      <a class="button secondary" href="/security/">Security writing</a>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <img src="/images/profile.jpg" alt="Souvik Haldar">
+    <div class="signal-card">
+      <span>Current Focus</span>
+      <strong>Hornet</strong>
+      <p>Blockchain and dark web investigation intelligence.</p>
+    </div>
+  </div>
+</section>
+
+<section class="metrics section-wrap">
+  <div><strong>STPI Chunauti 5.0</strong><span>Winner and seed funding recipient</span></div>
+  <div><strong>IIT Kanpur</strong><span>Executive cyber security diploma</span></div>
+  <div><strong>RSA + TiECon</strong><span>International cybersecurity showcases</span></div>
+</section>
+
+<section class="section-wrap split">
+  <div>
+    <p class="eyebrow">Work</p>
+    <h2>Engineering depth with an operator’s lens.</h2>
+  </div>
+  <div class="focus-grid">
+    <article><span>01</span><h3>Cyber Intelligence</h3><p>Dark web, blockchain, investigation workflows, and operational security tooling.</p></article>
+    <article><span>02</span><h3>Distributed Systems</h3><p>Backend services, networking primitives, reliability, observability, and Go systems.</p></article>
+    <article><span>03</span><h3>Embedded Curiosity</h3><p>Long-running interest in PCBs, hardware/software boundaries, and practical tinkering.</p></article>
+  </div>
+</section>
+
+<section class="section-wrap writing-head">
+  <div>
+    <p class="eyebrow">Latest Notes</p>
+    <h2>Writing archive</h2>
+  </div>
+  <a href="/programming/">View programming</a>
+</section>
+<section class="post-grid section-wrap">
+  {{ range $featured }}
+    {{ partial "post-card.html" . }}
+  {{ end }}
+</section>
+{{ end }}

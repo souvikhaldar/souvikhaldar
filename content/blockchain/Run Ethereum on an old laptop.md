@@ -136,8 +136,9 @@ These are the following steps I'm undertaking:
 
 
 
-This is how the final results looks to me and I <3 it! Yay! This is actually my macbook where I do all my work, but here I've sshed into my HP laptop connected to Tailscale, which is another piece of software I love!  
-{{< tweet user="s0uvikhaldar" id="1613389779969937409" >}}
+This is how the final results looks to me and I <3 it! Yay! This is actually my macbook where I do all my work, but here I've sshed into my HP laptop connected to Tailscale, which is another piece of software I love!
+
+{{< x user="s0uvikhaldar" id="1613389779969937409" >}}
 
 **Happy Hacking!**
 

@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section class="page-hero compact">
+  <p class="eyebrow">Browse</p>
+  <h1>{{ .Title }}</h1>
+</section>
+<section class="section-wrap tag-list">
+  {{ range .Data.Terms.Alphabetical }}
+    <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span>{{ .Count }}</span></a>
+  {{ end }}
+</section>
+{{ end }}

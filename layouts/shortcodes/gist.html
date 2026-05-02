@@ -1,0 +1,13 @@
+{{- $user := .Get 0 -}}
+{{- $id := .Get 1 -}}
+{{- $file := .Get 2 -}}
+{{- if and $user $id -}}
+  <span class="embed-card gist-embed">
+    <script src="https://gist.github.com/{{ $user }}/{{ $id }}.js{{ with $file }}?file={{ . }}{{ end }}"></script>
+    <noscript>
+      <a href="https://gist.github.com/{{ $user }}/{{ $id }}{{ with $file }}#file-{{ . }}{{ end }}">View this code snippet on GitHub Gist</a>
+    </noscript>
+  </span>
+{{- else -}}
+  {{ errorf "gist shortcode requires user and gist id in %q" .Page.File.Path }}
+{{- end -}}

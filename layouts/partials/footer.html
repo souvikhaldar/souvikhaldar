@@ -1,0 +1,12 @@
+<footer class="site-footer">
+  <div>
+    <strong>Souvik Haldar</strong>
+    <p>Building infrastructure for blockchain, dark web intelligence, cybersecurity, and distributed systems.</p>
+  </div>
+  <div class="footer-links">
+    {{ with site.Params.social.GitHub }}<a href="https://github.com/{{ . }}" rel="me noopener" target="_blank">GitHub</a>{{ end }}
+    {{ with site.Params.social.Linkedin }}<a href="https://www.linkedin.com/in/{{ . }}/" rel="me noopener" target="_blank">LinkedIn</a>{{ end }}
+    {{ with site.Params.social.Twitter }}<a href="https://twitter.com/{{ . }}" rel="me noopener" target="_blank">Twitter</a>{{ end }}
+    {{ with site.Params.author.email }}<a href="mailto:{{ . }}">Email</a>{{ end }}
+  </div>
+</footer>

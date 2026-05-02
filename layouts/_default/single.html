@@ -1,0 +1,14 @@
+{{ define "main" }}
+<article class="article-shell">
+  <header class="article-header">
+    <a class="eyebrow" href="{{ .Section | relURL }}">{{ .Section | humanize }}</a>
+    <h1>{{ .Title }}</h1>
+    {{ if .Date }}
+      <p class="article-meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</p>
+    {{ end }}
+  </header>
+  <div class="content">
+    {{ .Content }}
+  </div>
+</article>
+{{ end }}

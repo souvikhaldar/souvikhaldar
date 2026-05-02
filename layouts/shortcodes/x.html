@@ -1,0 +1,10 @@
+{{- $user := .Get "user" | default (.Get 0) -}}
+{{- $id := .Get "id" | default (.Get 1) -}}
+{{- if and $user $id -}}
+  <blockquote class="twitter-tweet tweet-embed">
+    <a href="https://twitter.com/{{ $user }}/status/{{ $id }}">View post by @{{ $user }}</a>
+  </blockquote>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+{{- else -}}
+  {{ errorf "x shortcode requires user and id in %q" .Page.File.Path }}
+{{- end -}}
