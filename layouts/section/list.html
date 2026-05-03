@@ -1,0 +1,16 @@
+{{ define "main" }}
+{{ $pages := .RegularPages.ByDate.Reverse }}
+<section class="page-hero compact">
+  <p class="eyebrow">Archive</p>
+  <h1>{{ .Title }}</h1>
+  <p>{{ with .Description }}{{ . }}{{ else }}Essays, notes, field reports, and technical references from this section.{{ end }}</p>
+</section>
+
+<section class="post-grid section-wrap">
+  {{ range $pages }}
+    {{ partial "post-card.html" . }}
+  {{ else }}
+    <p class="empty-state">No published notes in this section yet.</p>
+  {{ end }}
+</section>
+{{ end }}

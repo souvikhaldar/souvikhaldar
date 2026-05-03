@@ -1,8 +1,7 @@
 baseURL = "https://souvikhaldar.in/"
 ignoreLogs = ["warning-goldmark-raw-html", "shortcode-twitter-getremote"]
 
-# Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+# The site uses local layouts in ./layouts.
 
 # website title
 title = "Souvik Haldar"
@@ -552,5 +551,4 @@ weight = 8
   # LoveIt NEW | 0.2.0 Analytics config
   [params.analytics]
     enable = false
-
 
