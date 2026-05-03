@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Souvik Haldar portfolio social preview">
+  <defs>
+    <linearGradient id="accent" x1="150" y1="80" x2="1050" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#c94a2b"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="28" stdDeviation="32" flood-color="#2a251c" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="630" fill="#f7f5ef"/>
+  <path d="M0 0h1200v630H0z" fill="#f7f5ef"/>
+  <path d="M-90 134C112 12 253 22 421 164c142 120 302 134 479 42 125-65 236-75 390-11v435H-90V134Z" fill="#0f766e" opacity=".08"/>
+  <path d="M766-80c159 77 239 190 238 338-1 161 80 268 244 318v54H616c-47-159-22-307 75-444 51-72 76-161 75-266Z" fill="#c94a2b" opacity=".08"/>
+  <g filter="url(#softShadow)">
+    <rect x="72" y="70" width="1056" height="490" rx="28" fill="#fffdf8" stroke="#ded8cb"/>
+  </g>
+  <g transform="translate(116 120)">
+    <rect width="118" height="118" rx="26" fill="#171717"/>
+    <text x="24" y="79" fill="#fffdf8" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800" letter-spacing="-3">S</text>
+    <text x="68" y="79" fill="url(#accent)" font-family="Inter, Arial, sans-serif" font-size="64" font-weight="800" letter-spacing="-3">H</text>
+  </g>
+  <text x="116" y="318" fill="#171717" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="0">Souvik Haldar</text>
+  <text x="118" y="374" fill="#11413d" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="700" letter-spacing="0">Founder of Hornet · Cybersecurity · Blockchain Intelligence</text>
+  <text x="118" y="442" fill="#4f4b45" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="500" letter-spacing="0">
+    Portfolio, writing, talks, and technical notes on security, Go,
+  </text>
+  <text x="118" y="480" fill="#4f4b45" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="500" letter-spacing="0">
+    distributed systems, dark web investigation, and startup building.
+  </text>
+  <path d="M118 520h276" stroke="url(#accent)" stroke-width="7" stroke-linecap="round"/>
+  <text x="934" y="525" text-anchor="end" fill="#171717" font-family="IBM Plex Mono, Menlo, monospace" font-size="24" font-weight="700">souvikhaldar.in</text>
+</svg>

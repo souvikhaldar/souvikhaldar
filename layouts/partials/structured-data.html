@@ -1,17 +1,36 @@
 {{- $p := .Page -}}
 {{- $description := .Description -}}
 {{- $image := .Image -}}
+{{- $imageAlt := .ImageAlt -}}
 {{- $authorName := .AuthorName -}}
 {{- $authorEmail := .AuthorEmail -}}
 {{- $personID := printf "%s#person" site.BaseURL -}}
 {{- $websiteID := printf "%s#website" site.BaseURL -}}
 {{- $webpageID := printf "%s#webpage" $p.Permalink -}}
+{{- $logo := site.Params.seo.logoPng | default site.Params.seo.logo | default "/favicon.svg" -}}
+{{- $logoObject := dict
+  "@type" "ImageObject"
+  "url" ($logo | absURL)
+  "width" 512
+  "height" 512
+-}}
+{{- $imageObject := dict
+  "@type" "ImageObject"
+  "url" $image
+  "caption" $imageAlt
+-}}
+{{- $profileImage := dict
+  "@type" "ImageObject"
+  "url" ("/images/profile.jpg" | absURL)
+  "caption" $authorName
+-}}
 {{- $person := dict
   "@type" "Person"
   "@id" $personID
   "name" $authorName
   "url" site.BaseURL
-  "image" ("/images/profile.jpg" | absURL)
+  "image" $profileImage
+  "logo" $logoObject
   "email" (printf "mailto:%s" $authorEmail)
   "jobTitle" (site.Params.seo.jobTitle | default "Founder and Engineer")
   "worksFor" (dict "@type" "Organization" "name" (site.Params.seo.company | default "Hornet"))
@@ -24,6 +43,7 @@
   "url" site.BaseURL
   "description" site.Params.description
   "publisher" (dict "@id" $personID)
+  "thumbnailUrl" ((site.Params.seo.thumbnailUrl | default site.Params.seo.image | default "/images/social-card.png") | absURL)
 -}}
 {{- $webpageType := cond $p.IsHome "ProfilePage" (cond (eq $p.Kind "section") "CollectionPage" "WebPage") -}}
 {{- $webpage := dict
@@ -34,6 +54,7 @@
   "description" $description
   "isPartOf" (dict "@id" $websiteID)
   "about" (dict "@id" $personID)
+  "primaryImageOfPage" $imageObject
 -}}
 {{- $graph := slice $person $website $webpage -}}
 {{- if not $p.IsHome -}}
@@ -65,7 +86,7 @@
     "dateModified" ($p.Lastmod.Format "2006-01-02T15:04:05Z07:00")
     "author" (dict "@id" $personID)
     "publisher" (dict "@id" $personID)
-    "image" $image
+    "image" $imageObject
     "articleSection" ($p.Section | humanize)
     "wordCount" $p.WordCount
   -}}

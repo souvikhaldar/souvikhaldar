@@ -20,25 +20,41 @@
   {{- $image = index . 0 -}}
 {{- end -}}
 {{- $image = $image | absURL -}}
+{{- $defaultImage := "" -}}
+{{- with site.Params.images -}}
+  {{- $defaultImage = (index . 0) | absURL -}}
+{{- end -}}
+{{- $imageAlt := .Params.imageAlt | default .Params.image_alt | default site.Params.seo.imageAlt | default (printf "%s - %s" site.Title site.Params.description) -}}
 {{- $authorName := site.Params.author.name | default site.Title -}}
 {{- $authorEmail := site.Params.author.email -}}
 {{- $twitter := site.Params.social.Twitter -}}
+{{- $shareTitle := cond .IsHome (site.Params.seo.shareTitle | default site.Title) .Title -}}
 
 <title>{{ $title }}</title>
 <meta name="description" content="{{ $description }}">
 <meta name="author" content="{{ $authorName }}">
 <meta name="robots" content="{{ if or (eq .Kind "404") .Draft }}noindex, nofollow{{ else }}index, follow, max-image-preview:large{{ end }}">
+<meta name="application-name" content="{{ site.Title }}">
+<meta name="theme-color" content="{{ site.Params.app.themeColor | default "#f7f5ef" }}">
 {{ with site.Params.seo.keywords }}<meta name="keywords" content="{{ delimit . ", " }}">{{ end }}
 <link rel="canonical" href="{{ .Permalink }}">
 <link rel="alternate" type="application/rss+xml" title="{{ site.Title }}" href="{{ "index.xml" | absURL }}">
 
 <meta property="og:site_name" content="{{ site.Title }}">
-<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:title" content="{{ $shareTitle }}">
 <meta property="og:description" content="{{ $description }}">
 <meta property="og:url" content="{{ .Permalink }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:locale" content="en_US">
-{{ with $image }}<meta property="og:image" content="{{ . }}">{{ end }}
+{{ with $image }}
+<meta property="og:image" content="{{ . }}">
+<meta property="og:image:secure_url" content="{{ . }}">
+<meta property="og:image:alt" content="{{ $imageAlt }}">
+{{- if eq . $defaultImage }}
+<meta property="og:image:width" content="{{ site.Params.seo.imageWidth | default 1200 }}">
+<meta property="og:image:height" content="{{ site.Params.seo.imageHeight | default 630 }}">
+{{- end }}
+{{ end }}
 {{ if .IsPage }}
   {{ with .Date }}<meta property="article:published_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
   {{ with .Lastmod }}<meta property="article:modified_time" content="{{ .Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
@@ -47,8 +63,9 @@
 
 <meta name="twitter:card" content="summary_large_image">
 {{ with $twitter }}<meta name="twitter:site" content="@{{ . }}"><meta name="twitter:creator" content="@{{ . }}">{{ end }}
-<meta name="twitter:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+<meta name="twitter:title" content="{{ $shareTitle }}">
 <meta name="twitter:description" content="{{ $description }}">
 {{ with $image }}<meta name="twitter:image" content="{{ . }}">{{ end }}
+<meta name="twitter:image:alt" content="{{ $imageAlt }}">
 
-{{ partial "structured-data.html" (dict "Page" . "Description" $description "Image" $image "AuthorName" $authorName "AuthorEmail" $authorEmail) }}
+{{ partial "structured-data.html" (dict "Page" . "Description" $description "Image" $image "ImageAlt" $imageAlt "AuthorName" $authorName "AuthorEmail" $authorEmail) }}

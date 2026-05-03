@@ -66,15 +66,9 @@ img {
 }
 
 .brand-mark {
-  display: grid;
   width: 42px;
   height: 42px;
-  place-items: center;
-  border: 1px solid var(--ink);
-  background: var(--ink);
-  color: var(--paper);
-  font-family: var(--mono);
-  font-size: 0.88rem;
+  border-radius: 10px;
 }
 
 .site-nav {

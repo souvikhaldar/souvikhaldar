@@ -1,5 +1,5 @@
 ---
-title: "Cosmos"
-featured_image: '/images/profile.jpg'
-description: "Portfolio and writing archive of Souvik Haldar, founder of Hornet, covering cybersecurity, blockchain intelligence, distributed systems, Go, and engineering."
+title: "Souvik Haldar"
+featured_image: "/images/social-card.png"
+description: "Portfolio, writing, talks, and technical notes by Souvik Haldar, founder of Hornet, covering cybersecurity, blockchain intelligence, Go, distributed systems, and startup building."
 ---

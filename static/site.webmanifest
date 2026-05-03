@@ -1,12 +1,24 @@
 {
   "name": "Souvik Haldar",
   "short_name": "Souvik",
-  "description": "Souvik Haldar's portfolio and technical writing on cybersecurity, blockchain intelligence, distributed systems, and programming.",
+  "description": "Portfolio and technical writing by Souvik Haldar, founder of Hornet, covering cybersecurity, blockchain intelligence, distributed systems, Go, and startups.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f7f5ef",
-  "theme_color": "#171717",
+  "theme_color": "#f7f5ef",
   "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
     {
       "src": "/favicon.svg",
       "sizes": "64x64",
