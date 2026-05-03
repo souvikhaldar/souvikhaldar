@@ -1,0 +1,75 @@
+{{- $p := .Page -}}
+{{- $description := .Description -}}
+{{- $image := .Image -}}
+{{- $authorName := .AuthorName -}}
+{{- $authorEmail := .AuthorEmail -}}
+{{- $personID := printf "%s#person" site.BaseURL -}}
+{{- $websiteID := printf "%s#website" site.BaseURL -}}
+{{- $webpageID := printf "%s#webpage" $p.Permalink -}}
+{{- $person := dict
+  "@type" "Person"
+  "@id" $personID
+  "name" $authorName
+  "url" site.BaseURL
+  "image" ("/images/profile.jpg" | absURL)
+  "email" (printf "mailto:%s" $authorEmail)
+  "jobTitle" (site.Params.seo.jobTitle | default "Founder and Engineer")
+  "worksFor" (dict "@type" "Organization" "name" (site.Params.seo.company | default "Hornet"))
+  "sameAs" site.Params.seo.sameAs
+-}}
+{{- $website := dict
+  "@type" "WebSite"
+  "@id" $websiteID
+  "name" site.Title
+  "url" site.BaseURL
+  "description" site.Params.description
+  "publisher" (dict "@id" $personID)
+-}}
+{{- $webpageType := cond $p.IsHome "ProfilePage" (cond (eq $p.Kind "section") "CollectionPage" "WebPage") -}}
+{{- $webpage := dict
+  "@type" $webpageType
+  "@id" $webpageID
+  "url" $p.Permalink
+  "name" (cond $p.IsHome site.Title $p.Title)
+  "description" $description
+  "isPartOf" (dict "@id" $websiteID)
+  "about" (dict "@id" $personID)
+-}}
+{{- $graph := slice $person $website $webpage -}}
+{{- if not $p.IsHome -}}
+  {{- $items := slice (dict "@type" "ListItem" "position" 1 "name" "Home" "item" site.BaseURL) -}}
+  {{- if $p.Section -}}
+    {{- $sectionPage := site.GetPage $p.Section -}}
+    {{- with $sectionPage -}}
+      {{- $items = $items | append (dict "@type" "ListItem" "position" 2 "name" .Title "item" .Permalink) -}}
+    {{- end -}}
+  {{- end -}}
+  {{- $position := cond (and $p.Section (site.GetPage $p.Section)) 3 2 -}}
+  {{- $items = $items | append (dict "@type" "ListItem" "position" $position "name" $p.Title "item" $p.Permalink) -}}
+  {{- $breadcrumb := dict
+    "@type" "BreadcrumbList"
+    "@id" (printf "%s#breadcrumb" $p.Permalink)
+    "itemListElement" $items
+  -}}
+  {{- $graph = $graph | append $breadcrumb -}}
+{{- end -}}
+{{- if and $p.IsPage (ne $p.Type "page") -}}
+  {{- $article := dict
+    "@type" "BlogPosting"
+    "@id" (printf "%s#article" $p.Permalink)
+    "headline" $p.Title
+    "description" $description
+    "url" $p.Permalink
+    "mainEntityOfPage" (dict "@id" $webpageID)
+    "datePublished" ($p.Date.Format "2006-01-02T15:04:05Z07:00")
+    "dateModified" ($p.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+    "author" (dict "@id" $personID)
+    "publisher" (dict "@id" $personID)
+    "image" $image
+    "articleSection" ($p.Section | humanize)
+    "wordCount" $p.WordCount
+  -}}
+  {{- $graph = $graph | append $article -}}
+{{- end -}}
+{{- $schema := dict "@context" "https://schema.org" "@graph" $graph -}}
+<script type="application/ld+json">{{ $schema | jsonify | safeJS }}</script>

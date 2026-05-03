@@ -2,6 +2,7 @@
 title: How To Run Ethereum On An Old Laptop
 date: 2023-01-06
 draft: false
+description: "A practical walkthrough for running an Ethereum node on an old laptop with geth, Prysm, SSD storage, and home-network configuration."
 ---
 *A decentralized immutable append-only public ledger.*  
 By running a node that connects to the blockchain network, you become part of it and help decentralize it further, propagating the principle further, pat on back!  

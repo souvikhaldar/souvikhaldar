@@ -2,6 +2,7 @@
 title: "About"
 date: 2019-03-24T14:36:10+05:30
 draft: false
+description: "About Souvik Haldar, founder of Hornet, cybersecurity entrepreneur, engineer, and writer focused on blockchain intelligence, dark web investigation, distributed systems, and Go."
 ---
 
 ## Contact  

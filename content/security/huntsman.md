@@ -2,6 +2,8 @@
 title: "Huntsman: A swiss army knife for offensive security"
 date: 2020-07-26T13:53:35+05:30
 draft: false
+description: "Huntsman is an offensive security toolkit written in Go, designed as a fast, concurrent, single-binary utility for security research workflows."
+images: ["/images/huntsman-main.jpg"]
 ---
 # Huntsman
 A swiss army knife for offensive security.  
@@ -157,6 +159,5 @@ Huntsman is the tool that contains a keylogger as well.
 Eg. `huntsman keylogger -w localhost:8192 -l 8192`   
 
 This video is the demonstration for using huntsman as a keylogger. [Link to youtube video](https://youtu.be/BoPICq1MVhA)
-
 
 

@@ -1,0 +1,17 @@
+{
+  "name": "Souvik Haldar",
+  "short_name": "Souvik",
+  "description": "Souvik Haldar's portfolio and technical writing on cybersecurity, blockchain intelligence, distributed systems, and programming.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#171717",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

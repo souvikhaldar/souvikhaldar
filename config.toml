@@ -10,12 +10,14 @@ title = "Souvik Haldar"
 languageCode = "en"
 # language name ["English", "简体中文", "Français", "Polski", ...]
 languageName = "English"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
 
 # Author config
 [author]
   name = "Souvik Haldar"
   email = "mail@souvikhaldar.in"
-  link = ""
+  link = "https://souvikhaldar.in/about/"
 
 # Menu config
 # ORIGINAL
@@ -52,7 +54,7 @@ languageName = "English"
 # main menu
 [[menu.main]]
 name = "About"
-URL = "about"
+URL = "about/"
 weight = 1
 
 [[menu.main]]
@@ -119,9 +121,9 @@ weight = 8
   # website title for Open Graph and Twitter Cards
   title = "Souvik Haldar"
   # website description for RSS, SEO, Open Graph and Twitter Cards
-  description = "Talks about programming, cyber security, networking, productivity and critics"
+  description = "Souvik Haldar is the founder of Hornet and writes about cybersecurity, blockchain intelligence, dark web investigation, distributed systems, Go, and engineering."
   # website images for Open Graph and Twitter Cards
-  images = ["/logo.png"]
+  images = ["/images/profile.jpg"]
 
   # Header config
   [params.author]
@@ -544,11 +546,31 @@ weight = 8
   # LoveIt NEW | 0.2.10 Site SEO config
   [params.seo]
     # image URL
-    image = ""
+    image = "/images/profile.jpg"
     # thumbnail URL
-    thumbnailUrl = ""
+    thumbnailUrl = "/images/profile.jpg"
+    jobTitle = "Founder and Engineer"
+    company = "Hornet"
+    keywords = [
+      "Souvik Haldar",
+      "Hornet",
+      "cybersecurity",
+      "blockchain forensics",
+      "dark web intelligence",
+      "distributed systems",
+      "Golang",
+      "security research",
+      "engineering"
+    ]
+    sameAs = [
+      "https://github.com/souvikhaldar",
+      "https://www.linkedin.com/in/souvikhaldar/",
+      "https://twitter.com/s0uvikhaldar",
+      "https://www.instagram.com/souvikhaldar/",
+      "https://souvikhaldar.medium.com/",
+      "https://www.youtube.com/channel/UCUX6Z_qseERcReDrY2sE7KA"
+    ]
 
   # LoveIt NEW | 0.2.0 Analytics config
   [params.analytics]
     enable = false
-

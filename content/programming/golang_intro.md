@@ -2,6 +2,7 @@
 title: "What is Go programming language and why you should learn it"
 date: 2019-08-03T23:52:50+05:30
 draft: false
+description: "An introductory explanation of the Go programming language, its static typing, fast compilation, native binaries, concurrency model, and practical use cases."
 ---
 
 ## What is Go?
