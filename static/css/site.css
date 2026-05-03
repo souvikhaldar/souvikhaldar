@@ -466,6 +466,29 @@ h3 {
   border-radius: 8px;
 }
 
+.content iframe[src*="youtube"],
+.content iframe[src*="youtube-nocookie"] {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+
+.content div:has(> iframe[src*="youtube"]),
+.content div:has(> iframe[src*="youtube-nocookie"]) {
+  margin: 1.5rem 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #0f0f0f;
+}
+
+.content div:has(> iframe[src*="youtube"]) iframe,
+.content div:has(> iframe[src*="youtube-nocookie"]) iframe {
+  border-radius: 8px;
+}
+
 .embed-card {
   display: block;
   margin: 1.5rem 0;

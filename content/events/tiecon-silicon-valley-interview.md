@@ -7,7 +7,7 @@ images: ["/images/linkedin/tiecon-silicon-valley.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_im-delighted-to-share-my-interview-in-tiecon-tie-activity-7247216302971310080-SiTv"
 ---
 
-![TiECon Silicon Valley interview video cover](/images/linkedin/tiecon-silicon-valley.jpg)
+{{< youtube l_xSdXdHAes >}}
 
 I was interviewed at TiECon Silicon Valley at the Santa Clara Convention Centre in San Jose.
 
@@ -17,6 +17,6 @@ The interview also touched on the growth of cryptocurrency in India, the complia
 
 Representing Bengal on a global stage was personally meaningful. The broader message was simple: entrepreneurship from Kolkata and eastern India needs more examples, more confidence, and more willingness to take technical risks.
 
-The original LinkedIn post includes the full interview video.
+Watch the interview on YouTube: [https://youtu.be/l_xSdXdHAes](https://youtu.be/l_xSdXdHAes)
 
 [Original LinkedIn post](https://www.linkedin.com/posts/souvikhaldar_im-delighted-to-share-my-interview-in-tiecon-tie-activity-7247216302971310080-SiTv)
