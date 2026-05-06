@@ -5,6 +5,8 @@ draft: false
 description: "Hornet raised a $500K seed round led by Artha Venture Fund to scale crypto forensics, compliance, and cybercrime investigation technology."
 images: ["/images/linkedin/hornet-seed-round.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_startupfunding-seedround-growth-activity-7305960997423357953-XLUq"
+aliases:
+  - /events/hornet-seed-round/
 ---
 
 ![Hornet seed funding announcement](/images/linkedin/hornet-seed-round.jpg)

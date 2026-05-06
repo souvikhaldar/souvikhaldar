@@ -5,6 +5,8 @@ draft: false
 description: "A conversation with Techno India Group about entrepreneurship, childhood, vision, risk-taking, and returning to Techno Main Salt Lake as a founder."
 images: ["/images/linkedin/techno-india-interview-1.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_entrepreneurship-almamater-technology-activity-7139854967422595072-DFHt"
+aliases:
+  - /events/techno-india-founder-journey-interview/
 ---
 
 ![Techno India founder journey interview](/images/linkedin/techno-india-interview-1.jpg)

@@ -5,6 +5,8 @@ draft: false
 description: "Hornet's crypto forensics work was featured in The Telegraph, alongside a founder reflection on building from childhood curiosity in electronics to cybercrime investigation technology."
 images: ["/images/linkedin/hornet-telegraph.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_im-very-glad-to-share-that-our-efforts-at-activity-7307074153029754880-hz1x"
+aliases:
+  - /events/hornet-telegraph-coverage/
 ---
 
 ![Hornet featured in The Telegraph](/images/linkedin/hornet-telegraph.jpg)

@@ -5,6 +5,8 @@ draft: false
 description: "An interview at TiECon Silicon Valley on Hornet, crypto forensics, law-enforcement work, and representing Bengal on a global startup stage."
 images: ["/images/linkedin/tiecon-silicon-valley.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_im-delighted-to-share-my-interview-in-tiecon-tie-activity-7247216302971310080-SiTv"
+aliases:
+  - /events/tiecon-silicon-valley-interview/
 ---
 
 {{< youtube l_xSdXdHAes >}}

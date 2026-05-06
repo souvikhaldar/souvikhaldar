@@ -1,4 +1,4 @@
 ---
 title: "Events"
-description: "Talks, workshops, interviews, startup milestones, media coverage, and conference notes from the journey of building Hornet and working in technology communities."
+description: "Talks, workshops, conference notes, and community sessions from engineering, cybersecurity, and technology events."
 ---
