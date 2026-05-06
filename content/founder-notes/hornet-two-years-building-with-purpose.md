@@ -5,6 +5,8 @@ draft: false
 description: "A founder note on the first two years of Hornet, from the early conviction to build crypto forensics and dark web intelligence infrastructure to law-enforcement adoption and global ambition."
 images: ["/images/linkedin/hornet-two-years.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_hornet-startupjourney-blockchain-activity-7383471000073629696-Iy6e"
+aliases:
+  - /articles/hornet-two-years-building-with-purpose/
 ---
 
 ![Hornet team celebrating two years](/images/linkedin/hornet-two-years.jpg)

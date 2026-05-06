@@ -4,6 +4,8 @@ date: 2025-11-24T15:59:12.068+05:30
 draft: false
 description: "A founder note on Hornet's operating philosophy: building crypto forensics and dark web intelligence infrastructure with purpose, depth, and integrity."
 source: "https://www.linkedin.com/posts/hornet.technology_hornets-vision-mission-and-values-souvik-activity-7398669007739830272-qLyz"
+aliases:
+  - /articles/hornet-vision-mission-values/
 ---
 
 Hornet was built around a simple but demanding idea: investigation technology should help serious institutions fight cryptocurrency-enabled crime and dark-web threats with clarity, speed, and integrity.

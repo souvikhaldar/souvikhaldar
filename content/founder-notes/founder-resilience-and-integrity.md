@@ -4,6 +4,8 @@ date: 2026-02-26T09:45:01.052+05:30
 draft: false
 description: "A personal founder reflection on adversity, resilience, integrity, and continuing to build after a difficult period."
 source: "https://www.linkedin.com/posts/souvikhaldar_the-past-few-months-have-been-among-the-most-activity-7432639300720087041-s1yr"
+aliases:
+  - /articles/founder-resilience-and-integrity/
 ---
 
 Some periods test the difference between reputation, identity, and work.
