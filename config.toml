@@ -72,31 +72,36 @@ name = "Founder Notes"
 URL = "founder-notes/"
 weight = 4
 
+[[menu.main]]
+name = "Achievements"
+URL = "achievements/"
+weight = 5
+
 # footer menu
 [[menu.main]]
 name = "Events"
 URL = "events/"
-weight = 5
+weight = 6
 
 [[menu.main]]
 name = "Networking"
 URL = "networking/"
-weight = 6
+weight = 7
 
 [[menu.main]]
 name = "Programming"
 URL = "programming/"
-weight = 7
+weight = 8
 
 [[menu.main]]
 name = "Tools"
 URL = "tools/"
-weight = 8
+weight = 9
 
 [[menu.main]]
 name = "Blockchain"
 URL = "blockchain/"
-weight = 9
+weight = 10
 # OLD OVER------------------
 
 # Markup related configuration in Hugo
