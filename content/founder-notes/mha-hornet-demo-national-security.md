@@ -3,8 +3,11 @@ title: "Demonstrating Hornet at the Ministry of Home Affairs"
 date: 2024-11-15T12:08:03.792+05:30
 draft: false
 description: "A founder note on being invited by the Ministry of Home Affairs to demonstrate Hornet and discuss the future of crypto and dark web forensics in India."
+images: ["/images/linkedin/mha-hornet-demo-national-security.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_cybersecurity-cryptoforensics-darkweb-activity-7263077778390974464-JQUo"
 ---
+
+![Demonstrating Hornet at the Ministry of Home Affairs](/images/linkedin/mha-hornet-demo-national-security.jpg)
 
 I was honoured to be invited by the Ministry of Home Affairs, Government of India, to demonstrate Hornet and discuss the future of crypto and dark web forensics in India.
 
