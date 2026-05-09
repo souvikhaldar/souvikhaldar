@@ -3,8 +3,11 @@ title: "Telangana Police Procures Hornet"
 date: 2024-09-24T14:42:35.729+05:30
 draft: false
 description: "Telangana Police officially procured Hornet for cryptocurrency and dark web forensics, marking Hornet's first sale and a major founder milestone."
+images: ["/images/linkedin/telangana-police-procures-hornet.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_forensics-cybersecurity-crypto-activity-7244272498702180352-iEFR"
 ---
+
+![Telangana Police procures Hornet for crypto and dark web forensics](/images/linkedin/telangana-police-procures-hornet.jpg)
 
 This has to be one of the biggest moments of my life.
 

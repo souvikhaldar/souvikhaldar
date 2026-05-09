@@ -3,8 +3,11 @@ title: "Bidhannagar Police Commissionerate Procures Hornet"
 date: 2024-12-19T16:15:32.955+05:30
 draft: false
 description: "Hornet won a procurement deal with Bidhannagar Police Commissionerate, strengthening its position in crypto forensics and dark web investigation."
+images: ["/images/linkedin/bidhannagar-police-procures-hornet.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_cryptoforensics-cryptocurrency-darkweb-activity-7275461247708340224-lGmA"
 ---
+
+![Bidhannagar Police Commissionerate procures Hornet](/images/linkedin/bidhannagar-police-procures-hornet.jpg)
 
 Hornet won a significant procurement deal with Bidhannagar Police Commissionerate, strengthening its position in the fast-evolving crypto forensics industry.
 

@@ -3,8 +3,11 @@ title: "Felicitated by The Bengal Chamber of Commerce and Industry"
 date: 2025-03-20T19:21:31.533+05:30
 draft: false
 description: "A note of gratitude after being felicitated by The Bengal Chamber of Commerce and Industry and reflecting on Webel-BCC&I Tech Incubation Centre's role in Hornet's startup journey."
+images: ["/images/linkedin/bengal-chamber-felicitation-incubation-support.jpg"]
 source: "https://www.linkedin.com/posts/souvikhaldar_startupjourney-gratitude-incubationsupport-activity-7308485345967267840-4Enw"
 ---
+
+![Felicitated by The Bengal Chamber of Commerce and Industry](/images/linkedin/bengal-chamber-felicitation-incubation-support.jpg)
 
 A heartfelt thanks to The Bengal Chamber of Commerce and Industry for the honour of being felicitated.
 
