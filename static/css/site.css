@@ -303,6 +303,13 @@ h3 {
   color: var(--muted);
 }
 
+.focus-cta {
+  margin-top: 1rem;
+  min-height: 40px;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.95rem;
+}
+
 .writing-head {
   display: flex;
   align-items: end;
